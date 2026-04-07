@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, Coins, TrendingUp, Gem, Eye, Star, X, Sun, Moon, Globe } from 'lucide-react';
+import { LayoutDashboard, Coins, TrendingUp, Gem, Eye, Star, X, Sun, Moon, Globe, BookOpen } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useTheme } from '@/contexts/ThemeContext';
@@ -76,6 +76,16 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({ isOpen, onClose }) => {
               {item.name}
             </NavLink>
           ))}
+
+          <a
+            href="#/docs"
+            className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-text-muted hover:text-text hover:bg-surface-light border-l-2 border-transparent mt-4"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <BookOpen size={18} />
+            {t('footer.documentation') || 'Documentation'}
+          </a>
         </nav>
 
         <div className="p-4 border-t border-border">

@@ -14,7 +14,7 @@ export function Footer() {
           {/* Protocol Column */}
           <div className="flex flex-col gap-4">
             <h3 className="text-text font-semibold text-sm tracking-wider uppercase opacity-80 mb-2">{t('footer.protocol')}</h3>
-            <a href="#/" className="text-text-muted hover:text-text transition-colors text-sm">{t('footer.whitepaper')}</a>
+            <a href="#/whitepaper" className="text-text-muted hover:text-text transition-colors text-sm">{t('footer.whitepaper')}</a>
             <a href="#/" className="text-text-muted hover:text-text transition-colors text-sm">{t('footer.governance')}</a>
             <a href="#/" className="text-text-muted hover:text-text transition-colors text-sm">{t('footer.updates')}</a>
           </div>
@@ -22,21 +22,21 @@ export function Footer() {
           {/* Resources Column */}
           <div className="flex flex-col gap-4">
             <h3 className="text-text font-semibold text-sm tracking-wider uppercase opacity-80 mb-2">{t('footer.resources')}</h3>
-            <a href="#/" className="text-text-muted hover:text-text transition-colors text-sm">{t('footer.documentation')}</a>
-            <a href="#/" className="text-text-muted hover:text-text transition-colors text-sm">{t('footer.audits')}</a>
-            <a href="#/" className="text-text-muted hover:text-text transition-colors text-sm">{t('footer.riskPolicy')}</a>
+            <a href="#/docs" className="text-text-muted hover:text-text transition-colors text-sm">{t('footer.documentation')}</a>
+            <a href="#/audits" className="text-text-muted hover:text-text transition-colors text-sm">{t('footer.audits')}</a>
+            <a href="#/risk" className="text-text-muted hover:text-text transition-colors text-sm">{t('footer.riskPolicy')}</a>
           </div>
 
           {/* Community Column */}
           <div className="flex flex-col gap-4">
             <h3 className="text-text font-semibold text-sm tracking-wider uppercase opacity-80 mb-2">{t('footer.community')}</h3>
-            <a href="#/" className="text-text-muted hover:text-text transition-colors text-sm flex items-center gap-2">
+            <a href={SITE.twitter} target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-text transition-colors text-sm flex items-center gap-2">
               <MessageCircle className="w-4 h-4" /> Twitter / X
             </a>
-            <a href="#/" className="text-text-muted hover:text-text transition-colors text-sm flex items-center gap-2">
+            <a href={SITE.discord} target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-text transition-colors text-sm flex items-center gap-2">
               <Disc className="w-4 h-4" /> Discord
             </a>
-            <a href="#/" className="text-text-muted hover:text-text transition-colors text-sm flex items-center gap-2">
+            <a href={SITE.telegram} target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-text transition-colors text-sm flex items-center gap-2">
               <Send className="w-4 h-4" /> Telegram
             </a>
           </div>
@@ -52,11 +52,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-3 group">
-            <div className="relative w-6 h-6 flex items-center justify-center opacity-70 group-hover:opacity-100 transition-opacity">
-              <div className="absolute inset-0 bg-gradient-to-br from-violet-500 to-indigo-600 rounded-full" />
-              <div className="absolute inset-0.5 bg-gradient-to-br from-indigo-500 to-cyan-400 rounded-full" />
-              <div className="absolute inset-1 bg-cyan-300 rounded-full" />
-            </div>
+            <Logo className="w-6 h-6 opacity-70 group-hover:opacity-100 transition-opacity" />
             <span className="text-text-secondary text-sm font-medium">
               &copy; {currentYear} Matryo Finance
             </span>
