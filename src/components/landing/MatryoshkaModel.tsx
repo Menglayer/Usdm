@@ -69,8 +69,8 @@ export function MatryoshkaModel() {
         >
           <motion.div variants={modelVariants} className="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px]">
             {/* Outer Layer: DeFi Shell */}
-            <div 
-              role="presentation"
+            <button 
+              type="button"
               className={cn(
                 "absolute inset-0 rounded-[40px] md:rounded-[60px] border-2 flex flex-col items-center justify-start pt-6 md:pt-10 transition-all duration-500 cursor-crosshair z-10",
                 hoveredLayer === 'outer' || !hoveredLayer 
@@ -83,11 +83,11 @@ export function MatryoshkaModel() {
               <h3 className={cn("font-bold tracking-widest uppercase transition-colors text-sm md:text-base", hoveredLayer === 'outer' || !hoveredLayer ? "text-violet-300" : "text-white/30")}>
                 DeFi Shell
               </h3>
-            </div>
+            </button>
 
             {/* Middle Layer: CeFi Core */}
-            <div 
-              role="presentation"
+            <button 
+              type="button"
               className={cn(
                 "absolute inset-[15%] md:inset-[18%] rounded-[30px] md:rounded-[45px] border-2 flex flex-col items-center justify-start pt-6 md:pt-8 transition-all duration-500 cursor-crosshair z-20",
                 hoveredLayer === 'middle' || !hoveredLayer
@@ -100,10 +100,11 @@ export function MatryoshkaModel() {
               <h3 className={cn("font-bold tracking-widest uppercase transition-colors text-xs md:text-sm", hoveredLayer === 'middle' || !hoveredLayer ? "text-indigo-300" : "text-white/30")}>
                 CeFi Core
               </h3>
-            </div>
+            </button>
 
             {/* Inner Layer: RWA Foundation */}
-            <div 
+            <button 
+              type="button"
               className={cn(
                 "absolute inset-[30%] md:inset-[36%] rounded-[20px] md:rounded-[30px] border-2 flex flex-col items-center justify-center transition-all duration-500 cursor-crosshair z-30",
                 hoveredLayer === 'inner' || !hoveredLayer
@@ -121,7 +122,7 @@ export function MatryoshkaModel() {
               
               {/* Core energy dot */}
               <div className="absolute center-absolute w-2 h-2 rounded-full bg-cyan-300 shadow-[0_0_15px_#67e8f9] animate-pulse" />
-            </div>
+            </button>
           </motion.div>
         </motion.div>
 

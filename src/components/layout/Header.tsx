@@ -68,6 +68,7 @@ export function Header() {
 
           {/* Mobile Menu Toggle */}
           <button
+            type="button"
             className="md:hidden text-white/70 hover:text-white p-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
