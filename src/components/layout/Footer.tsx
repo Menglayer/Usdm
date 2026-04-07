@@ -1,6 +1,7 @@
 import { MessageCircle, Disc, Send } from 'lucide-react';
 import { SITE } from '@/lib/constants';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { Logo } from '@/components/shared/Logo';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();

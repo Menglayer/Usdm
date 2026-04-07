@@ -4,6 +4,7 @@ import { LayoutDashboard, Coins, TrendingUp, Gem, Eye, Star, X, Sun, Moon, Globe
 import { cn } from '@/lib/utils';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useTheme } from '@/contexts/ThemeContext';
+import { Logo } from '@/components/shared/Logo';
 
 interface AppSidebarProps {
   isOpen: boolean;
@@ -30,6 +31,7 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({ isOpen, onClose }) => {
         <div 
           className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm lg:hidden"
           onClick={onClose}
+          aria-hidden="true"
         />
       )}
       
@@ -41,10 +43,13 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({ isOpen, onClose }) => {
         )}
       >
         <div className="flex h-16 items-center justify-between px-6 border-b border-border">
-          <NavLink to="/" className="text-xl font-bold tracking-tight text-gradient">
-            Matryo
+          <NavLink to="/" className="flex items-center gap-3 group">
+            <Logo className="w-8 h-8" />
+            <span className="text-xl font-bold tracking-tight text-gradient">
+              Matryo
+            </span>
           </NavLink>
-          <button onClick={onClose} className="p-1 lg:hidden text-text-muted hover:text-text">
+          <button type="button" onClick={onClose} className="p-1 lg:hidden text-text-muted hover:text-text">
             <X size={20} />
           </button>
         </div>

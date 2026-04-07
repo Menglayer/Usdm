@@ -4,6 +4,7 @@ import { Menu, X, Sun, Moon, Globe } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useTheme } from '@/contexts/ThemeContext';
+import { Logo } from '@/components/shared/Logo';
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -36,12 +37,7 @@ export function Header() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <a href="#/" className="flex items-center gap-3 group">
-            <div className="relative w-8 h-8 flex items-center justify-center">
-              {/* Matryoshka-like layered ellipses */}
-              <div className="absolute inset-0 bg-gradient-to-br from-violet-500 to-indigo-600 rounded-full opacity-80 group-hover:scale-110 transition-transform duration-300" />
-              <div className="absolute inset-1 bg-gradient-to-br from-indigo-500 to-cyan-400 rounded-full opacity-90 group-hover:scale-110 transition-transform duration-300 delay-75" />
-              <div className="absolute inset-2 bg-cyan-300 rounded-full group-hover:scale-110 transition-transform duration-300 delay-150 shadow-[0_0_10px_rgba(6,182,212,0.8)]" />
-            </div>
+            <Logo className="w-8 h-8" />
             <span className="text-xl font-bold tracking-tight text-text">
               Matryo
             </span>
