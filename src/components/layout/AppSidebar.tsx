@@ -98,9 +98,13 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({ isOpen, onClose }) => {
               <span>{locale === 'zh' ? 'EN' : '中'}</span>
             </button>
           </div>
-          <button type="button" className="w-full rounded-lg border border-primary/50 text-primary py-2.5 text-sm font-medium hover:bg-primary/10 transition-colors">
-            {t('nav.connectWallet')}
-          </button>
+          <div className="w-full flex items-center justify-between rounded-lg border border-border bg-surface-light px-3 py-2.5 text-sm font-medium text-text transition-colors">
+            <div className="flex items-center gap-2">
+              <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-primary to-accent shrink-0"></div>
+              <span className="truncate">menglayer.btc</span>
+            </div>
+            <div className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]"></div>
+          </div>
         </div>
       </aside>
     </>

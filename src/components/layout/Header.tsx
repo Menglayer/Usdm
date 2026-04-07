@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Sun, Moon, Globe } from 'lucide-react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useTheme } from '@/contexts/ThemeContext';
@@ -11,6 +12,8 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { t, locale, setLocale } = useLanguage();
   const { theme, toggleTheme } = useTheme();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,10 +24,31 @@ export function Header() {
   }, []);
 
   const navLinks = [
-    { name: t('nav.home'), href: '#/' },
-    { name: t('nav.ecosystem'), href: '#/ecosystem' },
-    { name: t('nav.docs'), href: '#/docs' },
+    { name: t('nav.home'), path: '/' },
+    { name: t('nav.ecosystem'), path: 'ecosystem' },
+    { name: t('nav.docs'), path: '/docs' },
   ];
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
+    e.preventDefault();
+    
+    if (path === 'ecosystem') {
+      if (location.pathname !== '/') {
+        navigate('/');
+        setTimeout(() => {
+          document.getElementById('ecosystem')?.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      } else {
+        document.getElementById('ecosystem')?.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      navigate(path);
+      if (path === '/') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+    setIsMobileMenuOpen(false);
+  };
 
   return (
     <header
@@ -49,6 +73,7 @@ export function Header() {
               <a
                 key={link.name}
                 href={link.href}
+                onClick={(e) => handleNavClick(e, link.href)}
                 className="text-sm font-medium text-text-secondary hover:text-text transition-colors"
               >
                 {link.name}
@@ -109,7 +134,10 @@ export function Header() {
                   key={link.name}
                   href={link.href}
                   className="text-base font-medium text-text-secondary hover:text-text transition-colors py-2"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={(e) => {
+                    handleNavClick(e, link.href);
+                    setIsMobileMenuOpen(false);
+                  }}
                 >
                   {link.name}
                 </a>
