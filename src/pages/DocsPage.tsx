@@ -1,5 +1,4 @@
 import { ContentLayout } from '@/components/layout/ContentLayout';
-import { motion } from 'framer-motion';
 
 export const DocsPage = () => {
   return (
@@ -65,11 +64,11 @@ console.log(\`Unclaimed Yield: \${yieldEarned} USDM\`);`}</code></pre>
             Arbitrum, and Optimism.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
-            <a href="#" className="block p-6 bg-surface/50 border border-border hover:border-primary/50 rounded-xl transition-colors no-underline group">
+            <a href="/docs/contracts" className="block p-6 bg-surface/50 border border-border hover:border-primary/50 rounded-xl transition-colors no-underline group">
               <h4 className="text-primary group-hover:text-secondary transition-colors mb-2 mt-0">Smart Contracts →</h4>
               <p className="text-sm text-text-muted mb-0">Contract addresses and ABIs for all supported networks.</p>
             </a>
-            <a href="#" className="block p-6 bg-surface/50 border border-border hover:border-primary/50 rounded-xl transition-colors no-underline group">
+            <a href="/docs/api" className="block p-6 bg-surface/50 border border-border hover:border-primary/50 rounded-xl transition-colors no-underline group">
               <h4 className="text-primary group-hover:text-secondary transition-colors mb-2 mt-0">API Reference →</h4>
               <p className="text-sm text-text-muted mb-0">REST and GraphQL endpoints for historical data.</p>
             </a>
