@@ -7,6 +7,7 @@ export const Stake: React.FC = () => {
   const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState<'stake' | 'unstake'>('stake');
   const [amount, setAmount] = useState('');
+  const [isLoopMode, setIsLoopMode] = useState(false);
 
   const numericAmount = parseFloat(amount) || 0;
   const receiveAmount = activeTab === 'stake' ? numericAmount / 1.05 : numericAmount * 1.05;
@@ -78,9 +79,18 @@ export const Stake: React.FC = () => {
               <ArrowRight className="text-secondary opacity-50" size={24} />
             </div>
 
-            <div className="flex justify-between items-center bg-secondary/10 border border-secondary/20 px-4 py-3 rounded-xl">
-              <span className="text-sm font-medium text-secondary">{t('app.stake.currentApy')}</span>
-              <span className="text-lg font-bold text-secondary">28.4%</span>
+            <div className={cn(
+              "flex justify-between items-center px-4 py-3 rounded-xl border transition-all",
+              isLoopMode 
+                ? "bg-violet-500/10 border-violet-500/30" 
+                : "bg-secondary/10 border-secondary/20"
+            )}>
+              <span className={cn("text-sm font-medium", isLoopMode ? "text-violet-400" : "text-secondary")}>
+                {t('app.stake.currentApy')} {isLoopMode && "(Loop Mode)"}
+              </span>
+              <span className={cn("text-lg font-bold", isLoopMode ? "text-violet-400" : "text-secondary")}>
+                {isLoopMode ? "252%+" : "28.4%"}
+              </span>
             </div>
 
             <button type="button" className="w-full py-4 bg-secondary hover:bg-[#7C3AED] text-white font-semibold rounded-xl transition-colors text-lg shadow-lg shadow-secondary/20">
@@ -171,13 +181,19 @@ export const Stake: React.FC = () => {
             </div>
           </div>
           
-          <button 
-            type="button"
-            className="w-full py-3 px-4 bg-gradient-to-r from-violet-500 to-indigo-500 hover:from-violet-600 hover:to-indigo-600 text-white font-semibold rounded-xl transition-all shadow-xl shadow-violet-500/30 hover:shadow-2xl hover:shadow-violet-500/50 flex items-center justify-center gap-2 group"
-          >
-            <Zap size={18} className="group-hover:animate-spin" />
-            Enable 1-Click Loop
-          </button>
+           <button 
+             type="button"
+             onClick={() => setIsLoopMode(!isLoopMode)}
+             className={cn(
+               "w-full py-3 px-4 font-semibold rounded-xl transition-all shadow-xl flex items-center justify-center gap-2 group",
+               isLoopMode
+                 ? "bg-violet-600 hover:bg-violet-700 text-white shadow-violet-500/30 hover:shadow-2xl hover:shadow-violet-500/50"
+                 : "bg-gradient-to-r from-violet-500 to-indigo-500 hover:from-violet-600 hover:to-indigo-600 text-white shadow-violet-500/30 hover:shadow-2xl hover:shadow-violet-500/50"
+             )}
+           >
+             <Zap size={18} className={cn("transition-transform", isLoopMode ? "animate-spin" : "group-hover:animate-spin")} />
+             {isLoopMode ? "Loop Mode Active ✓" : "Enable 1-Click Loop"}
+           </button>
         </div>
       </div>
 
