@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { LayoutDashboard, Coins, TrendingUp, Gem, Eye, Star, X } from 'lucide-react';
 import { cn } from '@/lib/utils';

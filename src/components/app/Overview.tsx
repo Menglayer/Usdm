@@ -1,8 +1,6 @@
 import React from 'react';
 import { StatCard } from '@/components/shared/StatCard';
 import { Wallet, Coins, TrendingUp, Star, ArrowDownRight, ArrowUpRight } from 'lucide-react';
-import { cn } from '@/lib/utils';
-import { USER_MOCK_DATA, MOCK_STATS } from '@/data/stats';
 
 export const Overview: React.FC = () => {
   return (

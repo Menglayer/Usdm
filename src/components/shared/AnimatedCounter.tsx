@@ -1,4 +1,5 @@
-import CountUp from 'react-countup'
+import { useCountUp } from 'react-countup'
+import { useRef } from 'react'
 
 interface AnimatedCounterProps {
   end: number
@@ -19,18 +20,19 @@ export function AnimatedCounter({
   separator = ',',
   className = '',
 }: AnimatedCounterProps) {
-  return (
-    <CountUp
-      end={end}
-      duration={duration}
-      prefix={prefix}
-      suffix={suffix}
-      decimals={decimals}
-      separator={separator}
-      enableScrollSpy
-      scrollSpyOnce
-    >
-      {({ countUpRef }) => <span ref={countUpRef} className={className} />}
-    </CountUp>
-  )
+  const countUpRef = useRef<HTMLSpanElement>(null!)
+
+  useCountUp({
+    ref: countUpRef as React.RefObject<HTMLElement>,
+    end,
+    duration,
+    prefix,
+    suffix,
+    decimals,
+    separator,
+    enableScrollSpy: true,
+    scrollSpyOnce: true,
+  })
+
+  return <span ref={countUpRef} className={className} />
 }
