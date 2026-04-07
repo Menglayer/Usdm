@@ -96,13 +96,13 @@ export function Header() {
                   {link.name}
                 </a>
               ))}
-              <a
-                href="#/app"
+              <button
+                type="button"
+                onClick={() => { window.location.hash = '/app'; setIsMobileMenuOpen(false); }}
                 className="inline-flex items-center justify-center px-6 py-3 mt-4 text-base font-semibold text-white bg-indigo-600 rounded-full"
-                onClick={() => setIsMobileMenuOpen(false)}
               >
                 Launch App
-              </a>
+              </button>
             </div>
           </motion.div>
         )}
