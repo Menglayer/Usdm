@@ -72,8 +72,8 @@ export function Header() {
             {navLinks.map((link) => (
               <a
                 key={link.name}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
+                href={link.path === 'ecosystem' ? '/#ecosystem' : link.path}
+                onClick={(e) => handleNavClick(e, link.path)}
                 className="text-sm font-medium text-text-secondary hover:text-text transition-colors"
               >
                 {link.name}
@@ -132,11 +132,10 @@ export function Header() {
               {navLinks.map((link) => (
                 <a
                   key={link.name}
-                  href={link.href}
+                  href={link.path === 'ecosystem' ? '/#ecosystem' : link.path}
                   className="text-base font-medium text-text-secondary hover:text-text transition-colors py-2"
                   onClick={(e) => {
-                    handleNavClick(e, link.href);
-                    setIsMobileMenuOpen(false);
+                    handleNavClick(e, link.path);
                   }}
                 >
                   {link.name}

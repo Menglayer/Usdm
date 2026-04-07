@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Coins, ArrowRight, Info } from 'lucide-react';
+import { Coins, ArrowRight, Info, Zap } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -80,7 +80,7 @@ export const Stake: React.FC = () => {
 
             <div className="flex justify-between items-center bg-secondary/10 border border-secondary/20 px-4 py-3 rounded-xl">
               <span className="text-sm font-medium text-secondary">{t('app.stake.currentApy')}</span>
-              <span className="text-lg font-bold text-secondary">8.42%</span>
+              <span className="text-lg font-bold text-secondary">28.4%</span>
             </div>
 
             <button type="button" className="w-full py-4 bg-secondary hover:bg-[#7C3AED] text-white font-semibold rounded-xl transition-colors text-lg shadow-lg shadow-secondary/20">
@@ -137,6 +137,48 @@ export const Stake: React.FC = () => {
             </button>
           </div>
         )}
+      </div>
+
+      {/* Premium 1-Click Loop Feature */}
+      <div className="relative overflow-hidden rounded-2xl p-6 border-2 bg-gradient-to-br from-violet-500/10 via-surface to-indigo-500/10 border-transparent">
+        {/* Animated glow background */}
+        <div className="absolute -top-20 -right-20 w-40 h-40 bg-violet-500 rounded-full blur-3xl opacity-30 animate-pulse" />
+        <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-indigo-500 rounded-full blur-3xl opacity-30 animate-pulse" />
+        
+        {/* Gradient border effect */}
+        <div className="absolute inset-0 rounded-2xl p-0.5 bg-gradient-to-r from-violet-500 via-indigo-500 to-cyan-500 -z-10" style={{
+          backgroundClip: 'padding-box',
+          WebkitBackgroundClip: 'padding-box'
+        }} />
+        
+        <div className="relative z-10">
+          <div className="flex items-center gap-3 mb-3">
+            <Zap size={24} className="text-violet-400 animate-bounce" />
+            <h3 className="text-2xl font-bold bg-gradient-to-r from-violet-400 via-indigo-400 to-cyan-400 bg-clip-text text-transparent">
+              1-Click Loop
+            </h3>
+          </div>
+          <p className="text-sm text-text-muted mb-4">
+            Maximize your yield with automated leveraged staking. One click to unlock premium APY potential.
+          </p>
+          
+          <div className="bg-surface/50 backdrop-blur rounded-xl p-4 border border-violet-500/20 mb-4">
+            <div className="text-center">
+              <p className="text-xs font-medium text-violet-400 uppercase tracking-wider mb-1">Potential APY Boost</p>
+              <p className="text-3xl font-mono font-bold text-transparent bg-gradient-to-r from-violet-400 to-cyan-400 bg-clip-text">
+                Up to 252%+ APY
+              </p>
+            </div>
+          </div>
+          
+          <button 
+            type="button"
+            className="w-full py-3 px-4 bg-gradient-to-r from-violet-500 to-indigo-500 hover:from-violet-600 hover:to-indigo-600 text-white font-semibold rounded-xl transition-all shadow-xl shadow-violet-500/30 hover:shadow-2xl hover:shadow-violet-500/50 flex items-center justify-center gap-2 group"
+          >
+            <Zap size={18} className="group-hover:animate-spin" />
+            Enable 1-Click Loop
+          </button>
+        </div>
       </div>
 
       <div className="glass rounded-xl p-5 border border-border space-y-3">

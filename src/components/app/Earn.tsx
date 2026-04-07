@@ -113,7 +113,7 @@ export const Earn: React.FC = () => {
         </div>
         <div className="bg-surface border border-primary/30 px-6 py-4 rounded-xl text-center shrink-0 w-full sm:w-auto">
           <p className="text-xs font-medium text-primary uppercase tracking-wider mb-1">{t('app.earn.combinedApy')}</p>
-          <p className="text-3xl font-mono font-bold text-text">{t('app.earn.upTo')} 15%</p>
+          <p className="text-3xl font-mono font-bold text-text">{t('app.earn.upTo')} 28.4%</p>
         </div>
       </div>
     </div>

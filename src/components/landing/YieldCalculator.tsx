@@ -8,7 +8,7 @@ export const YieldCalculator = () => {
   const { t } = useLanguage();
 
   const [amount, setAmount] = useState(10000);
-  const apy = 8.42;
+  const apy = 28.4;
   const bankApy = 0.5;
 
   const calculateYield = (days: number, rate: number) => {
@@ -38,9 +38,10 @@ export const YieldCalculator = () => {
           <div className="mb-12">
             <div className="flex justify-between items-end mb-6">
               <div>
-                <label className="block text-sm font-medium text-text-secondary mb-2 uppercase tracking-wide">{t('yieldCalc.depositAmount')}</label>
+                <label htmlFor="deposit-amount" className="block text-sm font-medium text-text-secondary mb-2 uppercase tracking-wide">{t('yieldCalc.depositAmount')}</label>
                 <div className="text-4xl font-mono font-bold text-gradient flex items-center gap-1">
                   $<input 
+                    id="deposit-amount"
                     type="number" 
                     value={amount}
                     onChange={(e) => setAmount(Number(e.target.value))}
@@ -84,14 +85,14 @@ export const YieldCalculator = () => {
                 className={cn(
                   "p-6 rounded-2xl border transition-colors duration-300",
                   period.highlight 
-                    ? "bg-surface border-primary/30 shadow-[0_0_30px_rgba(99,102,241,0.15)]" 
+                    ? "bg-surface border-success/40 shadow-[0_0_40px_rgba(34,197,94,0.2)]" 
                     : "bg-surface-light/50 border-border/50"
                 )}
               >
                 <div className="text-sm text-text-secondary mb-2 font-medium">{period.label}</div>
                 <div className={cn(
                   "text-3xl font-mono font-bold",
-                  period.highlight ? "text-primary" : "text-text"
+                  period.highlight ? "text-success" : "text-text"
                 )}>
                   $<AnimatedCounter end={period.value} decimals={2} duration={0.8} />
                 </div>
@@ -99,14 +100,21 @@ export const YieldCalculator = () => {
             ))}
           </div>
 
-          <div className="bg-surface-light/40 rounded-xl p-4 text-center border border-border/40">
-            <p className="text-sm text-text-muted flex items-center justify-center gap-2">
-              <span className="text-success font-medium flex items-center gap-1">
-                +<AnimatedCounter end={diff} prefix="$" decimals={2} duration={1} /> more
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            className="bg-success/10 rounded-2xl p-6 text-center border border-success/30 shadow-[0_0_40px_rgba(34,197,94,0.15)] relative overflow-hidden group"
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-success/0 via-success/10 to-success/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+            <p className="text-lg flex flex-col sm:flex-row items-center justify-center gap-3 relative z-10">
+              <span className="text-success text-3xl font-bold font-mono tracking-tight flex items-center gap-1 glow-accent">
+                +<AnimatedCounter end={diff} prefix="$" decimals={2} duration={1} /> 
               </span>
-              <span>{t('yieldCalc.vsBankSavings')}</span>
+              <span className="text-text-secondary font-medium mt-1">
+                {t('yieldCalc.vsBankSavings')} (0.5% APY)
+              </span>
             </p>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

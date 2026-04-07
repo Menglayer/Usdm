@@ -100,7 +100,7 @@ export function Hero() {
             <div className="absolute inset-0 bg-gradient-to-r from-violet-600/10 to-indigo-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             <h3 className="text-sm font-medium text-text-muted uppercase tracking-wider mb-2 relative z-10">{t('hero.stat.apy')}</h3>
             <div className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-indigo-400 font-mono relative z-10 glow-accent">
-              <AnimatedCounter end={8.42} suffix="%" decimals={2} duration={2.5} />
+              <AnimatedCounter end={28.4} suffix="%" decimals={1} duration={2.5} />
             </div>
           </div>
 

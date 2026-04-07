@@ -38,7 +38,7 @@ export const Overview: React.FC = () => {
         />
         <StatCard 
           title={t('app.overview.currentApy')} 
-          value={8.42} 
+          value={28.4} 
           suffix="%" 
           decimals={2} 
           icon={<Star className="text-accent" />} 

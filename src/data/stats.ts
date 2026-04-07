@@ -1,7 +1,7 @@
 export const MOCK_STATS = {
   tvl: 847_520_000,
   musdSupply: 623_100_000,
-  smusdApy: 8.42,
+  smusdApy: 28.4,
   protocolRevenue: 4_230_000,
   collateralizationRatio: 103.5,
   totalUsers: 12_847,
@@ -109,7 +109,7 @@ export const USER_MOCK_DATA = {
   smusdBalance: 9_523.81,
   smusdValue: 10_450.12,
   earnedYield: 450.12,
-  currentApy: 8.42,
+  currentApy: 28.4,
   pointsBalance: 12_580,
   stakingDays: 45,
 }
