@@ -4,9 +4,9 @@ export const SITE = {
   description: 'The tri-layer stablecoin protocol. RWA yields × CeFi strategies × DeFi composability — nested like a Matryoshka.',
   url: 'https://matryo.finance',
   github: 'https://github.com/matryo-finance',
-  twitter: 'https://x.com/MatryoFinance',
-  discord: 'https://discord.gg/matryo',
-  telegram: 'https://t.me/MatryoFinance',
+  twitter: 'https://x.com/MengLayer',
+  discord: 'https://discord.gg/Vk7tKpPZmB',
+  telegram: 'https://t.me/MengYaWeb3',
   docs: 'https://docs.matryo.finance',
 } as const
 

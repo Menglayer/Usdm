@@ -2,8 +2,11 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { AnimatedCounter } from '@/components/shared/AnimatedCounter';
 import { cn } from '@/lib/utils';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export const YieldCalculator = () => {
+  const { t } = useLanguage();
+
   const [amount, setAmount] = useState(10000);
   const apy = 8.42;
   const bankApy = 0.5;
@@ -23,7 +26,7 @@ export const YieldCalculator = () => {
       <div className="absolute inset-0 bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">Calculate your earnings</h2>
+          <h2 className="text-3xl md:text-5xl font-bold mb-4">{t('yieldCalc.title')}</h2>
           <p className="text-text-muted max-w-2xl mx-auto text-lg">
             See how much your stablecoins could be earning with our sustainable yield strategies.
           </p>
@@ -35,9 +38,7 @@ export const YieldCalculator = () => {
           <div className="mb-12">
             <div className="flex justify-between items-end mb-6">
               <div>
-                <label className="block text-sm font-medium text-text-secondary mb-2 uppercase tracking-wide">
-                  Deposit Amount
-                </label>
+                <label className="block text-sm font-medium text-text-secondary mb-2 uppercase tracking-wide">{t('yieldCalc.depositAmount')}</label>
                 <div className="text-4xl font-mono font-bold text-gradient flex items-center gap-1">
                   $<input 
                     type="number" 
@@ -48,7 +49,7 @@ export const YieldCalculator = () => {
                 </div>
               </div>
               <div className="text-right hidden sm:block">
-                <div className="text-sm font-medium text-text-secondary mb-1 uppercase tracking-wide">Current APY</div>
+                <div className="text-sm font-medium text-text-secondary mb-1 uppercase tracking-wide">{t('yieldCalc.currentApy')}</div>
                 <div className="text-3xl font-bold text-success glow-accent">{apy}%</div>
               </div>
             </div>
@@ -103,7 +104,7 @@ export const YieldCalculator = () => {
               <span className="text-success font-medium flex items-center gap-1">
                 +<AnimatedCounter end={diff} prefix="$" decimals={2} duration={1} /> more
               </span>
-              <span>vs Bank Savings (0.5% APY)</span>
+              <span>{t('yieldCalc.vsBankSavings')}</span>
             </p>
           </div>
         </div>

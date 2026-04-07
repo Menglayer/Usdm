@@ -1,23 +1,28 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, Coins, TrendingUp, Gem, Eye, Star, X } from 'lucide-react';
+import { LayoutDashboard, Coins, TrendingUp, Gem, Eye, Star, X, Sun, Moon, Globe } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { useTheme } from '@/contexts/ThemeContext';
 
 interface AppSidebarProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-const navItems = [
-  { name: 'Overview', path: '/app', icon: LayoutDashboard, exact: true },
-  { name: 'Mint / Redeem', path: '/app/mint', icon: Coins },
-  { name: 'Stake', path: '/app/stake', icon: TrendingUp },
-  { name: 'Earn', path: '/app/earn', icon: Gem },
-  { name: 'Transparency', path: '/app/transparency', icon: Eye },
-  { name: 'Points', path: '/app/points', icon: Star },
-];
-
 export const AppSidebar: React.FC<AppSidebarProps> = ({ isOpen, onClose }) => {
+  const { t, locale, setLocale } = useLanguage();
+  const { theme, toggleTheme } = useTheme();
+
+  const navItems = [
+    { name: t('nav.overview'), path: '/app', icon: LayoutDashboard, exact: true },
+    { name: t('nav.mintRedeem'), path: '/app/mint', icon: Coins },
+    { name: t('nav.stake'), path: '/app/stake', icon: TrendingUp },
+    { name: t('nav.earn'), path: '/app/earn', icon: Gem },
+    { name: t('nav.transparency'), path: '/app/transparency', icon: Eye },
+    { name: t('nav.points'), path: '/app/points', icon: Star },
+  ];
+
   return (
     <>
       {/* Mobile Backdrop */}
@@ -69,8 +74,17 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({ isOpen, onClose }) => {
         </nav>
 
         <div className="p-4 border-t border-border">
-          <button className="w-full rounded-lg border border-primary/50 text-primary py-2.5 text-sm font-medium hover:bg-primary/10 transition-colors">
-            Connect Wallet
+          <div className="flex items-center gap-2 mb-3">
+            <button type="button" onClick={toggleTheme} className="flex-1 flex items-center justify-center gap-1 py-2 rounded-lg text-sm text-text-muted hover:text-text hover:bg-surface-light transition-colors">
+              {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+            </button>
+            <button type="button" onClick={() => setLocale(locale === 'zh' ? 'en' : 'zh')} className="flex-1 flex items-center justify-center gap-1 py-2 rounded-lg text-sm text-text-muted hover:text-text hover:bg-surface-light transition-colors">
+              <Globe size={16} />
+              <span>{locale === 'zh' ? 'EN' : '中'}</span>
+            </button>
+          </div>
+          <button type="button" className="w-full rounded-lg border border-primary/50 text-primary py-2.5 text-sm font-medium hover:bg-primary/10 transition-colors">
+            {t('nav.connectWallet')}
           </button>
         </div>
       </aside>

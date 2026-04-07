@@ -1,8 +1,11 @@
 import { motion } from 'framer-motion';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export function ProblemStatement() {
+  const { t } = useLanguage();
+
   return (
-    <section className="py-24 bg-bg-alt relative border-y border-white/5 overflow-hidden">
+    <section className="py-24 bg-bg-alt relative border-y border-border/50 overflow-hidden">
       {/* Subtle background glow */}
       <div className="absolute top-0 left-1/4 w-1/2 h-full bg-violet-600/5 blur-[100px] pointer-events-none" />
 
@@ -14,8 +17,8 @@ export function ProblemStatement() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
-            Stablecoins were never meant to <span className="text-indigo-400">sit idle.</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-text mb-6 tracking-tight">
+            Stablecoins were never meant to <span className="text-indigo-400">{t('problem.titleHighlight')}</span>
           </h2>
         </motion.div>
 
@@ -28,14 +31,12 @@ export function ProblemStatement() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="flex flex-col gap-6"
           >
-            <div className="glass p-8 rounded-3xl border border-white/5 shadow-2xl relative overflow-hidden group">
+            <div className="glass p-8 rounded-3xl border border-border/50 shadow-2xl relative overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-br from-danger/5 to-transparent opacity-50" />
-              <h3 className="text-xl font-semibold text-white mb-4 flex items-center gap-3">
-                <span className="w-8 h-8 rounded-full bg-danger/20 text-danger flex items-center justify-center font-bold font-mono text-sm">01</span>
-                The Broken Model
-              </h3>
-              <p className="text-white/70 leading-relaxed text-lg">
-                Currently, stablecoin issuers like Tether capture <span className="text-white font-medium">$6B+ annually</span> from reserves. USDC yields nothing to everyday holders. User deposits generate billions in yield, but those returns go exclusively to centralized corporations.
+              <h3 className="text-xl font-semibold text-text mb-4 flex items-center gap-3">
+                <span className="w-8 h-8 rounded-full bg-danger/20 text-danger flex items-center justify-center font-bold font-mono text-sm">01</span>{t('problem.brokenModel')}</h3>
+              <p className="text-text-secondary leading-relaxed text-lg">
+                Currently, stablecoin issuers like Tether capture <span className="text-text font-medium">$6B+ annually</span> from reserves. USDC yields nothing to everyday holders. User deposits generate billions in yield, but those returns go exclusively to centralized corporations.
               </p>
             </div>
           </motion.div>
@@ -52,12 +53,10 @@ export function ProblemStatement() {
               <div className="absolute inset-0 bg-gradient-to-bl from-indigo-500/10 to-violet-500/10 opacity-50" />
               <div className="absolute -right-10 -top-10 w-32 h-32 bg-indigo-500/20 rounded-full blur-2xl group-hover:bg-indigo-500/30 transition-colors" />
               
-              <h3 className="text-xl font-semibold text-white mb-4 flex items-center gap-3 relative z-10">
-                <span className="w-8 h-8 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold font-mono text-sm shadow-[0_0_10px_rgba(99,102,241,0.5)]">02</span>
-                The Matryo Solution
-              </h3>
-              <p className="text-white/80 leading-relaxed text-lg relative z-10">
-                We flip the model. Matryo passes <strong className="text-white font-semibold">80% of the generated yield</strong> back to token holders. By stacking RWA foundation yields, CeFi basis trading, and DeFi composability, we create a stablecoin that actively works for you.
+              <h3 className="text-xl font-semibold text-text mb-4 flex items-center gap-3 relative z-10">
+                <span className="w-8 h-8 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold font-mono text-sm shadow-[0_0_10px_rgba(99,102,241,0.5)]">02</span>{t('problem.solution')}</h3>
+              <p className="text-text-secondary leading-relaxed text-lg relative z-10">
+                We flip the model. Matryo passes <strong className="text-text font-semibold">80% of the generated yield</strong> back to token holders. By stacking RWA foundation yields, CeFi basis trading, and DeFi composability, we create a stablecoin that actively works for you.
               </p>
             </div>
           </motion.div>

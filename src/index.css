@@ -40,6 +40,19 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  /* Light theme overrides */
+  .light {
+    --color-bg: #F8FAFC;
+    --color-bg-alt: #F1F5F9;
+    --color-surface: #FFFFFF;
+    --color-surface-light: #F1F5F9;
+    --color-border: #E2E8F0;
+    --color-border-light: #CBD5E1;
+    --color-text: #0F172A;
+    --color-text-secondary: #475569;
+    --color-text-muted: #94A3B8;
+  }
+
   #root {
     min-height: 100dvh;
   }
@@ -84,10 +97,20 @@
     border: 1px solid rgba(30, 30, 46, 0.5);
   }
 
+  .light .glass {
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+  }
+
   .glass-strong {
     background: rgba(19, 19, 26, 0.85);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(30, 30, 46, 0.7);
+  }
+
+  .light .glass-strong {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(226, 232, 240, 0.9);
   }
 
   .glow-primary {
@@ -95,8 +118,18 @@
                 0 0 60px rgba(99, 102, 241, 0.05);
   }
 
+  .light .glow-primary {
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.12),
+                0 0 40px rgba(99, 102, 241, 0.04);
+  }
+
   .glow-accent {
     box-shadow: 0 0 20px rgba(6, 182, 212, 0.15),
                 0 0 60px rgba(6, 182, 212, 0.05);
+  }
+
+  .light .glow-accent {
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.12),
+                0 0 40px rgba(6, 182, 212, 0.04);
   }
 }

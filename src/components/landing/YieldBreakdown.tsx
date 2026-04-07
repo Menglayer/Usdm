@@ -2,6 +2,8 @@
 import { motion } from 'framer-motion';
 
 export const YieldBreakdown = () => {
+  const { t } = useLanguage();
+
   const data = [
     { label: 'Users', percentage: 80, color: '#10B981', description: 'Distributed directly to smUSD holders' },
     { label: 'Protocol', percentage: 10, color: '#8B5CF6', description: 'Reinvested for protocol growth and development' },
@@ -27,9 +29,7 @@ export const YieldBreakdown = () => {
     <section className="py-24 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
-            Where your yield comes from
-          </h2>
+          <h2 className="text-3xl md:text-5xl font-bold mb-4">{t('yieldBreakdown.title')}</h2>
           <p className="text-text-muted max-w-2xl mx-auto text-lg">
             Transparent, sustainable yield generation across multiple layers of DeFi.
           </p>
@@ -96,3 +96,4 @@ export const YieldBreakdown = () => {
     </section>
   );
 };
+import { useLanguage } from '@/contexts/LanguageContext';

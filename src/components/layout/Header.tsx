@@ -1,11 +1,15 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Sun, Moon, Globe } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { useTheme } from '@/contexts/ThemeContext';
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { t, locale, setLocale } = useLanguage();
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,9 +20,9 @@ export function Header() {
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '#/' },
-    { name: 'Ecosystem', href: '#/ecosystem' },
-    { name: 'Docs', href: '#/docs' },
+    { name: t('nav.home'), href: '#/' },
+    { name: t('nav.ecosystem'), href: '#/ecosystem' },
+    { name: t('nav.docs'), href: '#/docs' },
   ];
 
   return (
@@ -38,7 +42,7 @@ export function Header() {
               <div className="absolute inset-1 bg-gradient-to-br from-indigo-500 to-cyan-400 rounded-full opacity-90 group-hover:scale-110 transition-transform duration-300 delay-75" />
               <div className="absolute inset-2 bg-cyan-300 rounded-full group-hover:scale-110 transition-transform duration-300 delay-150 shadow-[0_0_10px_rgba(6,182,212,0.8)]" />
             </div>
-            <span className="text-xl font-bold tracking-tight text-white">
+            <span className="text-xl font-bold tracking-tight text-text">
               Matryo
             </span>
           </a>
@@ -49,27 +53,44 @@ export function Header() {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium text-white/70 hover:text-white transition-colors"
+                className="text-sm font-medium text-text-secondary hover:text-text transition-colors"
               >
                 {link.name}
               </a>
             ))}
           </nav>
 
-          {/* Launch App Button (Desktop) */}
-          <div className="hidden md:block">
+          {/* Right Section (Desktop) */}
+          <div className="hidden md:flex items-center gap-4">
+            <div className="flex items-center gap-2 mr-2">
+              <button
+                type="button"
+                onClick={toggleTheme}
+                className="p-2 text-text-muted hover:text-text transition-colors rounded-full hover:bg-surface-light"
+              >
+                {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+              </button>
+              <button
+                type="button"
+                onClick={() => setLocale(locale === 'zh' ? 'en' : 'zh')}
+                className="flex items-center gap-1 p-2 text-text-muted hover:text-text transition-colors rounded-full hover:bg-surface-light text-sm font-medium"
+              >
+                <Globe size={18} />
+                <span>{locale === 'zh' ? 'EN' : '中'}</span>
+              </button>
+            </div>
             <a
               href="#/app"
               className="inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700 rounded-full shadow-[0_0_20px_rgba(99,102,241,0.3)] hover:shadow-[0_0_25px_rgba(99,102,241,0.5)] transition-all duration-300"
             >
-              Launch App
+              {t('nav.launchApp')}
             </a>
           </div>
 
           {/* Mobile Menu Toggle */}
           <button
             type="button"
-            className="md:hidden text-white/70 hover:text-white p-2"
+            className="md:hidden text-text-secondary hover:text-text p-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -91,18 +112,41 @@ export function Header() {
                 <a
                   key={link.name}
                   href={link.href}
-                  className="text-base font-medium text-white/80 hover:text-white transition-colors py-2"
+                  className="text-base font-medium text-text-secondary hover:text-text transition-colors py-2"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.name}
                 </a>
               ))}
+              
+              <div className="flex items-center gap-4 py-2 border-t border-white/5 mt-2 pt-4">
+                <button
+                  type="button"
+                  onClick={toggleTheme}
+                  className="flex items-center gap-2 text-sm text-text-muted hover:text-text transition-colors"
+                >
+                  {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+                  <span>{theme === 'dark' ? t('theme.light') : t('theme.dark')}</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setLocale(locale === 'zh' ? 'en' : 'zh');
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="flex items-center gap-2 text-sm text-text-muted hover:text-text transition-colors ml-4"
+                >
+                  <Globe size={18} />
+                  <span>{locale === 'zh' ? 'English' : '中文'}</span>
+                </button>
+              </div>
+
               <button
                 type="button"
                 onClick={() => { window.location.hash = '/app'; setIsMobileMenuOpen(false); }}
                 className="inline-flex items-center justify-center px-6 py-3 mt-4 text-base font-semibold text-white bg-indigo-600 rounded-full"
               >
-                Launch App
+                {t('nav.launchApp')}
               </button>
             </div>
           </motion.div>

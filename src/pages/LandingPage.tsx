@@ -4,6 +4,14 @@ import { Hero } from '@/components/landing/Hero';
 import { ProblemStatement } from '@/components/landing/ProblemStatement';
 import { MatryoshkaModel } from '@/components/landing/MatryoshkaModel';
 import { HowItWorks } from '@/components/landing/HowItWorks';
+import { YieldBreakdown } from '@/components/landing/YieldBreakdown';
+import { YieldCalculator } from '@/components/landing/YieldCalculator';
+import { Security } from '@/components/landing/Security';
+import { PointsSystem } from '@/components/landing/PointsSystem';
+import { Ecosystem } from '@/components/landing/Ecosystem';
+import { Redemption } from '@/components/landing/Redemption';
+import { FAQ } from '@/components/landing/FAQ';
+import { CTAFooter } from '@/components/landing/CTAFooter';
 
 export function LandingPage() {
   return (
@@ -14,16 +22,14 @@ export function LandingPage() {
         <ProblemStatement />
         <MatryoshkaModel />
         <HowItWorks />
-        
-        {/* Placeholder sections as requested */}
-        <div id="YieldBreakdown" />
-        <div id="YieldCalculator" />
-        <div id="Security" />
-        <div id="PointsSystem" />
-        <div id="Ecosystem" />
-        <div id="Redemption" />
-        <div id="FAQ" />
-        <div id="CTAFooter" />
+        <YieldBreakdown />
+        <YieldCalculator />
+        <Security />
+        <PointsSystem />
+        <Ecosystem />
+        <Redemption />
+        <FAQ />
+        <CTAFooter />
       </main>
       <Footer />
     </div>

@@ -1,19 +1,24 @@
 import * as Accordion from '@radix-ui/react-accordion';
 import { motion } from 'framer-motion';
 import { Plus } from 'lucide-react';
-import { FAQ_DATA } from '@/data/stats';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export const FAQ = () => {
+  const { t } = useLanguage();
+
+  const faqItems = Array.from({ length: 8 }, (_, i) => ({
+    q: t(`faq.q${i + 1}`),
+    a: t(`faq.a${i + 1}`),
+  }));
+
   return (
     <section className="py-24 relative overflow-hidden bg-surface-light/30">
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
-            Frequently Asked Questions
-          </h2>
+          <h2 className="text-3xl md:text-5xl font-bold mb-4">{t('faq.title')}</h2>
           <p className="text-text-muted max-w-2xl mx-auto text-lg">
-            Everything you need to know about the Matryo Finance protocol and how it works.
+            {t('faq.subtitle')}
           </p>
         </div>
 
@@ -25,7 +30,7 @@ export const FAQ = () => {
           className="space-y-4"
         >
           <Accordion.Root type="single" collapsible className="w-full">
-            {FAQ_DATA.map((item, i) => (
+            {faqItems.map((item, i) => (
               <Accordion.Item
                 key={`faq-${i}`}
                 value={`item-${i}`}

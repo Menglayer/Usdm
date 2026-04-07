@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { ArrowDown, Coins, AlertCircle } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export const MintRedeem: React.FC = () => {
+  const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState<'mint' | 'redeem'>('mint');
   const [asset, setAsset] = useState('USDC');
   const [amount, setAmount] = useState('');
@@ -17,7 +19,7 @@ export const MintRedeem: React.FC = () => {
 
   return (
     <div className="max-w-xl mx-auto space-y-6">
-      <h1 className="text-3xl font-bold tracking-tight text-text">Mint & Redeem</h1>
+      <h1 className="text-3xl font-bold tracking-tight text-text">{t('app.mintRedeem')}</h1>
 
       <div className="glass rounded-2xl p-6 border border-border">
         {/* Tabs */}
@@ -30,7 +32,7 @@ export const MintRedeem: React.FC = () => {
             )}
             onClick={() => setActiveTab('mint')}
           >
-            Mint
+            {t('app.mintRedeem.mint')}
           </button>
           <button
             type="button"
@@ -40,14 +42,14 @@ export const MintRedeem: React.FC = () => {
             )}
             onClick={() => setActiveTab('redeem')}
           >
-            Redeem
+            {t('app.mintRedeem.redeem')}
           </button>
         </div>
 
         {activeTab === 'mint' ? (
           <div className="space-y-4">
             <div className="space-y-2">
-              <label htmlFor="mint-from" className="text-sm font-medium text-text-muted">From Asset</label>
+              <label htmlFor="mint-from" className="text-sm font-medium text-text-muted">{t('app.mintRedeem.fromAsset')}</label>
               <div className="flex gap-2">
                 <select 
                   id="mint-from"
@@ -78,7 +80,7 @@ export const MintRedeem: React.FC = () => {
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="mint-to" className="text-sm font-medium text-text-muted">To Asset</label>
+              <label htmlFor="mint-to" className="text-sm font-medium text-text-muted">{t('app.mintRedeem.toAsset')}</label>
               <div className="flex gap-2 bg-surface-light border border-border rounded-xl px-4 py-3 opacity-80">
                 <div className="flex items-center gap-2 w-1/3">
                   <Coins className="text-primary" size={20} />
@@ -94,8 +96,8 @@ export const MintRedeem: React.FC = () => {
               <AlertCircle className="text-accent mt-0.5 shrink-0" size={18} />
               <div className="text-sm text-text-muted">
                 {isStable 
-                  ? "1 USDC = 1 mUSD. No slippage for stablecoin minting." 
-                  : "Over-collateralized at 150%. Subject to liquidation if ratio drops below 110%."}
+                  ? t('app.mintRedeem.stableNote')
+                  : t('app.mintRedeem.volatileNote')}
               </div>
             </div>
 
@@ -104,13 +106,13 @@ export const MintRedeem: React.FC = () => {
               onClick={handleAction}
               className="w-full py-4 mt-6 bg-primary hover:bg-primary-light text-white font-semibold rounded-xl transition-colors text-lg shadow-lg shadow-primary/20"
             >
-              Mint mUSD
+              {t('app.mintRedeem.mintMusd')}
             </button>
           </div>
         ) : (
           <div className="space-y-4">
             <div className="space-y-2">
-              <label htmlFor="redeem-from" className="text-sm font-medium text-text-muted">From mUSD</label>
+              <label htmlFor="redeem-from" className="text-sm font-medium text-text-muted">{t('app.mintRedeem.fromMusd')}</label>
               <div className="flex gap-2">
                 <div className="flex items-center gap-2 w-1/3 bg-surface border border-border rounded-xl px-4 py-3">
                   <Coins className="text-primary" size={20} />
@@ -133,7 +135,7 @@ export const MintRedeem: React.FC = () => {
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="redeem-to" className="text-sm font-medium text-text-muted">To Asset</label>
+              <label htmlFor="redeem-to" className="text-sm font-medium text-text-muted">{t('app.mintRedeem.toAsset')}</label>
               <div className="flex gap-2">
                 <select 
                   id="redeem-to"
@@ -153,11 +155,11 @@ export const MintRedeem: React.FC = () => {
             <div className="p-4 rounded-xl bg-surface-light border border-border space-y-3 mt-4">
               <label className="flex items-center gap-3 cursor-pointer group">
                 <input type="radio" name="redeem-type" className="text-primary focus:ring-primary h-4 w-4 bg-surface border-border" defaultChecked />
-                <span className="text-sm font-medium text-text group-hover:text-primary transition-colors">Instant Redeem (1:1)</span>
+                <span className="text-sm font-medium text-text group-hover:text-primary transition-colors">{t('app.mintRedeem.instantRedeem')}</span>
               </label>
               <label className="flex items-center gap-3 cursor-pointer group">
                 <input type="radio" name="redeem-type" className="text-primary focus:ring-primary h-4 w-4 bg-surface border-border" />
-                <span className="text-sm font-medium text-text group-hover:text-primary transition-colors">Slow Redeem (30 days, +0.5% bonus)</span>
+                <span className="text-sm font-medium text-text group-hover:text-primary transition-colors">{t('app.mintRedeem.slowRedeem')}</span>
               </label>
             </div>
 
@@ -166,7 +168,7 @@ export const MintRedeem: React.FC = () => {
               onClick={handleAction}
               className="w-full py-4 mt-6 bg-primary hover:bg-primary-light text-white font-semibold rounded-xl transition-colors text-lg shadow-lg shadow-primary/20"
             >
-              Redeem mUSD
+              {t('app.mintRedeem.redeemMusd')}
             </button>
           </div>
         )}
@@ -174,8 +176,8 @@ export const MintRedeem: React.FC = () => {
 
       {showToast && (
         <div className="fixed bottom-6 right-6 bg-surface border border-primary p-4 rounded-xl shadow-lg shadow-primary/10 animate-in fade-in slide-in-from-bottom-5">
-          <p className="font-medium text-text">Connect wallet to continue</p>
-          <p className="text-sm text-text-muted">You need to connect your wallet to perform this action.</p>
+          <p className="font-medium text-text">{t('app.mintRedeem.connectWalletTitle')}</p>
+          <p className="text-sm text-text-muted">{t('app.mintRedeem.connectWalletDesc')}</p>
         </div>
       )}
     </div>

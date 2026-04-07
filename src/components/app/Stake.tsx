@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Coins, ArrowRight, Info } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export const Stake: React.FC = () => {
+  const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState<'stake' | 'unstake'>('stake');
   const [amount, setAmount] = useState('');
 
@@ -11,7 +13,7 @@ export const Stake: React.FC = () => {
 
   return (
     <div className="max-w-xl mx-auto space-y-6">
-      <h1 className="text-3xl font-bold tracking-tight text-text">Stake mUSD</h1>
+      <h1 className="text-3xl font-bold tracking-tight text-text">{t('app.stake.title')}</h1>
 
       <div className="glass rounded-2xl p-6 border border-border">
         {/* Tabs */}
@@ -24,7 +26,7 @@ export const Stake: React.FC = () => {
             )}
             onClick={() => setActiveTab('stake')}
           >
-            Stake
+            {t('app.stake.stake')}
           </button>
           <button
             type="button"
@@ -34,24 +36,25 @@ export const Stake: React.FC = () => {
             )}
             onClick={() => setActiveTab('unstake')}
           >
-            Unstake
+            {t('app.stake.unstake')}
           </button>
         </div>
 
         {activeTab === 'stake' ? (
           <div className="space-y-6">
             <div className="flex justify-between items-center bg-surface-light px-4 py-2 rounded-lg border border-border/50">
-              <span className="text-sm text-text-muted">Current Exchange Rate</span>
+              <span className="text-sm text-text-muted">{t('app.stake.exchangeRate')}</span>
               <span className="text-sm font-medium text-text">1 smUSD = 1.05 mUSD</span>
             </div>
 
             <div className="space-y-2">
               <div className="flex justify-between">
-                <label className="text-sm font-medium text-text-muted">Amount to Stake</label>
-                <span className="text-sm text-text-muted">Balance: 10,000.00 mUSD</span>
+                <label htmlFor="stake-amount" className="text-sm font-medium text-text-muted">{t('app.stake.amountToStake')}</label>
+                <span className="text-sm text-text-muted">{t('app.stake.balance')}: 10,000.00 mUSD</span>
               </div>
               <div className="flex gap-2 bg-surface border border-border rounded-xl px-4 py-3 focus-within:border-secondary transition-colors">
                 <input 
+                  id="stake-amount"
                   type="number"
                   placeholder="0.00"
                   value={amount}
@@ -67,7 +70,7 @@ export const Stake: React.FC = () => {
 
             <div className="p-4 rounded-xl bg-surface-light border border-border flex justify-between items-center">
               <div>
-                <p className="text-sm text-text-muted mb-1">You will receive</p>
+                <p className="text-sm text-text-muted mb-1">{t('app.stake.youWillReceive')}</p>
                 <p className="text-xl font-mono font-medium text-secondary">
                   {receiveAmount.toFixed(4)} smUSD
                 </p>
@@ -76,28 +79,29 @@ export const Stake: React.FC = () => {
             </div>
 
             <div className="flex justify-between items-center bg-secondary/10 border border-secondary/20 px-4 py-3 rounded-xl">
-              <span className="text-sm font-medium text-secondary">Current APY</span>
+              <span className="text-sm font-medium text-secondary">{t('app.stake.currentApy')}</span>
               <span className="text-lg font-bold text-secondary">8.42%</span>
             </div>
 
-            <button className="w-full py-4 bg-secondary hover:bg-[#7C3AED] text-white font-semibold rounded-xl transition-colors text-lg shadow-lg shadow-secondary/20">
-              Stake mUSD
+            <button type="button" className="w-full py-4 bg-secondary hover:bg-[#7C3AED] text-white font-semibold rounded-xl transition-colors text-lg shadow-lg shadow-secondary/20">
+              {t('app.stake.stakeMusd')}
             </button>
           </div>
         ) : (
           <div className="space-y-6">
             <div className="flex justify-between items-center bg-surface-light px-4 py-2 rounded-lg border border-border/50">
-              <span className="text-sm text-text-muted">Current Exchange Rate</span>
+              <span className="text-sm text-text-muted">{t('app.stake.exchangeRate')}</span>
               <span className="text-sm font-medium text-text">1 smUSD = 1.05 mUSD</span>
             </div>
 
             <div className="space-y-2">
               <div className="flex justify-between">
-                <label className="text-sm font-medium text-text-muted">Amount to Unstake</label>
-                <span className="text-sm text-text-muted">Balance: 6,830.00 smUSD</span>
+                <label htmlFor="unstake-amount" className="text-sm font-medium text-text-muted">{t('app.stake.amountToUnstake')}</label>
+                <span className="text-sm text-text-muted">{t('app.stake.balance')}: 6,830.00 smUSD</span>
               </div>
               <div className="flex gap-2 bg-surface border border-border rounded-xl px-4 py-3 focus-within:border-secondary transition-colors">
                 <input 
+                  id="unstake-amount"
                   type="number"
                   placeholder="0.00"
                   value={amount}
@@ -113,7 +117,7 @@ export const Stake: React.FC = () => {
 
             <div className="p-4 rounded-xl bg-surface-light border border-border flex justify-between items-center">
               <div>
-                <p className="text-sm text-text-muted mb-1">You will receive</p>
+                <p className="text-sm text-text-muted mb-1">{t('app.stake.youWillReceive')}</p>
                 <p className="text-xl font-mono font-medium text-primary">
                   {receiveAmount.toFixed(2)} mUSD
                 </p>
@@ -124,12 +128,12 @@ export const Stake: React.FC = () => {
             <div className="flex items-start gap-3 p-4 bg-warning/10 border border-warning/20 rounded-xl">
               <Info className="text-warning shrink-0 mt-0.5" size={18} />
               <p className="text-sm text-warning-light">
-                <strong>7-day cooldown period applies.</strong> Unstaked mUSD will be available to claim after the cooldown period ends.
+                <strong>{t('app.stake.cooldownWarning')}</strong> {t('app.stake.cooldownDesc')}
               </p>
             </div>
 
-            <button className="w-full py-4 bg-surface border border-border hover:bg-surface-light text-text font-semibold rounded-xl transition-colors text-lg">
-              Unstake smUSD
+            <button type="button" className="w-full py-4 bg-surface border border-border hover:bg-surface-light text-text font-semibold rounded-xl transition-colors text-lg">
+              {t('app.stake.unstakeSmusd')}
             </button>
           </div>
         )}
@@ -137,10 +141,10 @@ export const Stake: React.FC = () => {
 
       <div className="glass rounded-xl p-5 border border-border space-y-3">
         <h3 className="font-semibold text-text flex items-center gap-2">
-          <Info size={18} className="text-accent" /> How smUSD works
+          <Info size={18} className="text-accent" /> {t('app.stake.howSmusdWorks')}
         </h3>
         <p className="text-sm text-text-muted leading-relaxed">
-          smUSD is a yield-bearing token that represents your staked mUSD. The exchange rate between smUSD and mUSD grows over time as the protocol earns yield from its multi-layered strategies. You don't need to claim yield manually — holding smUSD is all you need to do.
+          {t('app.stake.howSmusdWorksDesc')}
         </p>
       </div>
     </div>

@@ -1,8 +1,11 @@
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export const CTAFooter = () => {
+  const { t } = useLanguage();
+
   return (
     <section className="relative overflow-hidden py-32 border-t border-border/30">
       {/* Background Gradient */}
@@ -16,7 +19,7 @@ export const CTAFooter = () => {
           viewport={{ once: true }}
           className="text-5xl md:text-7xl font-bold tracking-tight mb-6"
         >
-          Start earning with <span className="text-gradient">every layer.</span>
+          Start earning with <span className="text-gradient">{t('cta.titleHighlight')}</span>
         </motion.h2>
         
         <motion.p 
@@ -55,13 +58,13 @@ export const CTAFooter = () => {
           viewport={{ once: true }}
           className="flex items-center gap-6 mt-20"
         >
-          <a href="https://twitter.com" target="_blank" rel="noreferrer" className="px-4 py-2 rounded-full glass border border-border/50 text-text-muted hover:text-white hover:border-primary/50 transition-all hover:-translate-y-1 text-sm font-semibold">
+          <a href="https://x.com/MengLayer" target="_blank" rel="noreferrer" className="px-4 py-2 rounded-full glass border border-border/50 text-text-muted hover:text-white hover:border-primary/50 transition-all hover:-translate-y-1 text-sm font-semibold">
             Twitter
           </a>
-          <a href="https://discord.com" target="_blank" rel="noreferrer" className="px-4 py-2 rounded-full glass border border-border/50 text-text-muted hover:text-white hover:border-primary/50 transition-all hover:-translate-y-1 text-sm font-semibold">
+          <a href="https://discord.gg/Vk7tKpPZmB" target="_blank" rel="noreferrer" className="px-4 py-2 rounded-full glass border border-border/50 text-text-muted hover:text-white hover:border-primary/50 transition-all hover:-translate-y-1 text-sm font-semibold">
             Discord
           </a>
-          <a href="https://t.me" target="_blank" rel="noreferrer" className="px-4 py-2 rounded-full glass border border-border/50 text-text-muted hover:text-white hover:border-primary/50 transition-all hover:-translate-y-1 text-sm font-semibold">
+          <a href="https://t.me/MengYaWeb3" target="_blank" rel="noreferrer" className="px-4 py-2 rounded-full glass border border-border/50 text-text-muted hover:text-white hover:border-primary/50 transition-all hover:-translate-y-1 text-sm font-semibold">
             Telegram
           </a>
         </motion.div>

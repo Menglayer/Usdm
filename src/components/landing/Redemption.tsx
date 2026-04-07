@@ -1,7 +1,10 @@
 import { motion } from 'framer-motion';
 import { ArrowDownCircle, Info, Timer, Zap } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export const Redemption = () => {
+  const { t } = useLanguage();
+
   const options = [
     {
       title: 'Instant',
@@ -57,9 +60,7 @@ export const Redemption = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.2, duration: 0.5 }}
                 viewport={{ once: true }}
-                className={`relative flex items-center md:justify-between flex-col md:flex-row ${
-                  i % 2 === 0 ? 'md:flex-row-reverse' : ''
-                }`}
+                className={`relative flex items-center md:justify-between flex-col md:flex-row ${ i % 2 === 0 ? 'md:flex-row-reverse' : '' }`}
               >
                 {/* Center marker */}
                 <div className="absolute left-0 md:left-1/2 top-4 md:top-1/2 -ml-3 md:-mt-3 w-6 h-6 rounded-full bg-surface border-4 border-border/80 z-10" />
@@ -71,7 +72,7 @@ export const Redemption = () => {
                       <opt.icon className="w-3.5 h-3.5" />
                       {opt.badge}
                     </div>
-                    <h3 className="text-xl font-bold mb-2 text-white">{opt.title}</h3>
+                    <h3 className="text-xl font-bold mb-2 text-text">{opt.title}</h3>
                     <p className="text-text-muted text-sm leading-relaxed">
                       {opt.description}
                     </p>
@@ -85,7 +86,7 @@ export const Redemption = () => {
         <div className="glass p-4 rounded-xl flex items-start gap-4 border border-border/50 bg-primary/5">
           <Info className="w-5 h-5 text-primary shrink-0 mt-0.5" />
           <p className="text-sm text-text-muted leading-relaxed">
-            <strong className="text-white font-medium">Emergency Protocol Guard:</strong> In the event of extreme market volatility, instant redemptions are guaranteed up to $5M per user per day from the protocol insurance fund.
+            <strong className="text-text font-medium">{t('redemption.emergencyGuard')}</strong> In the event of extreme market volatility, instant redemptions are guaranteed up to $5M per user per day from the protocol insurance fund.
           </p>
         </div>
       </div>

@@ -1,8 +1,11 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Wallet, Layers, LineChart } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export function HowItWorks() {
+  const { t } = useLanguage();
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { 
@@ -57,10 +60,10 @@ export function HowItWorks() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
-            Get started in <span className="text-gradient">three steps</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-text mb-6 tracking-tight">
+            Get started in <span className="text-gradient">{t('howItWorks.titleHighlight')}</span>
           </h2>
-          <p className="text-lg text-white/60">
+          <p className="text-lg text-text-muted">
             From stablecoins to stacked yields in minutes. We handle the complexity, you keep the returns.
           </p>
         </motion.div>
@@ -98,7 +101,7 @@ export function HowItWorks() {
                 </div>
 
                 {/* Card Content */}
-                <div className="glass p-8 rounded-3xl border border-white/5 w-full h-full hover:border-white/10 transition-colors relative overflow-hidden">
+                <div className="glass p-8 rounded-3xl border border-border/50 w-full h-full hover:border-border transition-colors relative overflow-hidden">
                   <div className={cn(
                     "absolute top-0 right-0 w-32 h-32 blur-[60px] opacity-20 pointer-events-none transition-opacity group-hover:opacity-40",
                     step.color === 'cyan' && "bg-cyan-500",
@@ -113,10 +116,10 @@ export function HowItWorks() {
                       step.color === 'indigo' && "text-indigo-400",
                       step.color === 'violet' && "text-violet-400"
                     )} />
-                    <h3 className="text-2xl font-bold text-white">{step.title}</h3>
+                    <h3 className="text-2xl font-bold text-text">{step.title}</h3>
                   </div>
                   
-                  <p className="text-white/60 leading-relaxed">
+                  <p className="text-text-muted leading-relaxed">
                     {step.desc}
                   </p>
                 </div>

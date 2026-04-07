@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Menu } from 'lucide-react';
 import { AppSidebar } from './AppSidebar';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export const AppLayout: React.FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const { t } = useLanguage();
 
   return (
     <div className="flex h-screen w-full bg-bg text-text overflow-hidden">
@@ -30,7 +32,7 @@ export const AppLayout: React.FC = () => {
             type="button"
             className="rounded-lg border border-primary/50 text-primary px-3 py-1.5 text-sm font-medium hover:bg-primary/10 transition-colors"
           >
-            Connect
+            {t('nav.connect')}
           </button>
         </header>
 

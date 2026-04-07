@@ -2,8 +2,11 @@ import React from 'react';
 import { EARN_STRATEGIES } from '@/data/stats';
 import { ShieldAlert, ArrowRight, Zap, Target, Layers } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export const Earn: React.FC = () => {
+  const { t } = useLanguage();
+
   const getRiskBadge = (risk: string) => {
     switch (risk.toLowerCase()) {
       case 'low': return 'bg-success/20 text-success border-success/30';
@@ -20,18 +23,27 @@ export const Earn: React.FC = () => {
     return 'primary';
   };
 
+  const strategies = EARN_STRATEGIES.map((s, i) => ({
+    ...s,
+    name: t(`app.earn.${['foundation', 'core', 'shell'][i]}`),
+    tier: t(`app.earn.layer${i + 1}`),
+    label: t(`app.earn.${['rwaBaseYield', 'cefiEnhanced', 'defiComposable'][i]}`),
+    risk: t(`app.earn.risk${['Low', 'Medium', 'MediumHigh'][i]}`),
+    description: t(`app.earn.${['rwaDesc', 'cefiDesc', 'defiDesc'][i]}`),
+  }));
+
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight text-text mb-2">Earn Strategies</h1>
+        <h1 className="text-3xl font-bold tracking-tight text-text mb-2">{t('app.earn.title')}</h1>
         <p className="text-text-muted max-w-2xl">
-          Matryo Finance aggregates yield across multiple layers of risk and complexity to deliver a sustainable blended APY for smUSD holders.
+          {t('app.earn.subtitle')}
         </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {EARN_STRATEGIES.map((strategy, index) => {
-          const accentColor = getAccentColor(strategy.tier);
+        {strategies.map((strategy, index) => {
+          const accentColor = getAccentColor(EARN_STRATEGIES[index].tier);
           
           return (
             <div key={strategy.name} className="glass rounded-2xl p-6 border border-border flex flex-col relative overflow-hidden group hover:border-border/80 transition-colors">
@@ -53,8 +65,8 @@ export const Earn: React.FC = () => {
                     {strategy.name}
                   </h3>
                 </div>
-                <div className={cn("px-2 py-1 rounded-md text-xs font-medium border", getRiskBadge(strategy.risk))}>
-                  {strategy.risk} Risk
+                <div className={cn("px-2 py-1 rounded-md text-xs font-medium border", getRiskBadge(EARN_STRATEGIES[index].risk))}>
+                  {strategy.risk}{t('app.earn.risk')}
                 </div>
               </div>
 
@@ -63,7 +75,7 @@ export const Earn: React.FC = () => {
                   {strategy.description}
                 </p>
                 <div className="bg-surface-light rounded-xl p-4 border border-border">
-                  <div className="text-sm text-text-muted mb-1">Target APY</div>
+                  <div className="text-sm text-text-muted mb-1">{t('app.earn.targetApy')}</div>
                   <div className="text-2xl font-mono font-bold text-text">
                     {strategy.apy.min}% - {strategy.apy.max}%
                   </div>
@@ -71,7 +83,7 @@ export const Earn: React.FC = () => {
               </div>
 
               <div className="flex-1 mb-6 relative z-10">
-                <h4 className="text-sm font-semibold text-text mb-3">Core Strategies:</h4>
+                <h4 className="text-sm font-semibold text-text mb-3">{t('app.earn.coreStrategies')}</h4>
                 <ul className="space-y-2">
                   {strategy.strategies.map((item, i) => (
                     <li key={`${strategy.name}-${i}`} className="flex items-start gap-2 text-sm text-text-muted">
@@ -83,7 +95,7 @@ export const Earn: React.FC = () => {
               </div>
 
               <button type="button" className="w-full mt-auto py-3 px-4 border border-border hover:bg-surface-light text-text font-medium rounded-xl transition-colors flex items-center justify-center gap-2 relative z-10">
-                Learn More <ArrowRight size={16} />
+                {t('app.earn.learnMore')} <ArrowRight size={16} />
               </button>
             </div>
           );
@@ -93,15 +105,15 @@ export const Earn: React.FC = () => {
       <div className="glass rounded-2xl p-6 border border-primary/20 bg-primary/5 flex flex-col sm:flex-row justify-between items-center gap-6">
         <div>
           <h3 className="text-xl font-bold text-text mb-1 flex items-center gap-2">
-            <Zap size={20} className="text-primary" /> Maximize Your Yield
+            <Zap size={20} className="text-primary" /> {t('app.earn.maximizeYield')}
           </h3>
           <p className="text-sm text-text-muted">
-            By staking your mUSD, you gain exposure to all three layers of yield simultaneously.
+            {t('app.earn.maximizeYieldDesc')}
           </p>
         </div>
         <div className="bg-surface border border-primary/30 px-6 py-4 rounded-xl text-center shrink-0 w-full sm:w-auto">
-          <p className="text-xs font-medium text-primary uppercase tracking-wider mb-1">Combined APY</p>
-          <p className="text-3xl font-mono font-bold text-text">up to 15%</p>
+          <p className="text-xs font-medium text-primary uppercase tracking-wider mb-1">{t('app.earn.combinedApy')}</p>
+          <p className="text-3xl font-mono font-bold text-text">{t('app.earn.upTo')} 15%</p>
         </div>
       </div>
     </div>

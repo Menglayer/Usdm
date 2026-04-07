@@ -1,7 +1,10 @@
 import { motion } from 'framer-motion';
 import { Shield, Eye, Lock } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export const Security = () => {
+  const { t } = useLanguage();
+
   const features = [
     {
       title: 'Multi-Sig Control',
@@ -25,7 +28,7 @@ export const Security = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold mb-4">
-            Security is not a feature. <span className="text-gradient">It's the foundation.</span>
+            Security is not a feature. <span className="text-gradient">{t('security.titleHighlight')}</span>
           </h2>
           <p className="text-text-muted max-w-2xl mx-auto text-lg">
             Built with institutional-grade security measures at every layer of the protocol.

@@ -1,8 +1,11 @@
 import { motion } from 'framer-motion';
 import { AnimatedCounter } from '@/components/shared/AnimatedCounter';
 import { CheckCircle2, ChevronRight, Zap } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export const PointsSystem = () => {
+  const { t } = useLanguage();
+
   return (
     <section className="py-24 relative overflow-hidden bg-surface-light/30">
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
@@ -19,9 +22,7 @@ export const PointsSystem = () => {
             <Zap className="w-4 h-4 fill-primary" />
             Matryoshka Points
           </motion.div>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
-            Stack points. Unlock rewards.
-          </h2>
+          <h2 className="text-3xl md:text-5xl font-bold mb-4">{t('points.title')}</h2>
           <p className="text-text-muted max-w-2xl mx-auto text-lg">
             Matryoshka Points (MP) reward every interaction. The earlier you participate, the more you earn.
           </p>
@@ -35,9 +36,7 @@ export const PointsSystem = () => {
             className="glass-strong rounded-3xl p-8 border border-border/50"
           >
             <h3 className="text-2xl font-bold mb-8 flex items-center gap-3">
-              <span className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary text-sm">1</span>
-              How to earn points
-            </h3>
+              <span className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary text-sm">1</span>{t('points.howToEarn')}</h3>
             <ul className="space-y-6">
               {[
                 { title: 'Hold mUSD/smUSD', desc: '1 MP per $1 per day' },
@@ -67,9 +66,7 @@ export const PointsSystem = () => {
             className="glass-strong rounded-3xl p-8 border border-border/50 bg-surface/80"
           >
             <h3 className="text-2xl font-bold mb-8 flex items-center gap-3">
-              <span className="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center text-secondary text-sm">2</span>
-              What points unlock
-            </h3>
+              <span className="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center text-secondary text-sm">2</span>{t('points.whatUnlock')}</h3>
             <ul className="space-y-4">
               {[
                 'Future token airdrops',
@@ -86,9 +83,7 @@ export const PointsSystem = () => {
             </ul>
 
             <div className="mt-10 p-6 rounded-2xl bg-gradient-to-br from-primary/10 to-secondary/10 border border-primary/20 text-center">
-              <div className="text-sm font-medium text-text-secondary uppercase tracking-wider mb-2">
-                Total MP Distributed
-              </div>
+              <div className="text-sm font-medium text-text-secondary uppercase tracking-wider mb-2">{t('points.totalDistributed')}</div>
               <div className="text-4xl md:text-5xl font-mono font-bold text-gradient">
                 <AnimatedCounter end={24500000} duration={2} separator="," />
               </div>

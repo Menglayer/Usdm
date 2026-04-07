@@ -1,8 +1,10 @@
 import { MessageCircle, Disc, Send } from 'lucide-react';
 import { SITE } from '@/lib/constants';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const { t } = useLanguage();
 
   return (
     <footer className="relative bg-bg-alt border-t border-white/5 py-12 md:py-16 z-10 overflow-hidden">
@@ -10,39 +12,39 @@ export function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
           {/* Protocol Column */}
           <div className="flex flex-col gap-4">
-            <h3 className="text-white font-semibold text-sm tracking-wider uppercase opacity-80 mb-2">Protocol</h3>
-            <a href="#/" className="text-white/60 hover:text-white transition-colors text-sm">Whitepaper</a>
-            <a href="#/" className="text-white/60 hover:text-white transition-colors text-sm">Governance</a>
-            <a href="#/" className="text-white/60 hover:text-white transition-colors text-sm">Updates</a>
+            <h3 className="text-text font-semibold text-sm tracking-wider uppercase opacity-80 mb-2">{t('footer.protocol')}</h3>
+            <a href="#/" className="text-text-muted hover:text-text transition-colors text-sm">{t('footer.whitepaper')}</a>
+            <a href="#/" className="text-text-muted hover:text-text transition-colors text-sm">{t('footer.governance')}</a>
+            <a href="#/" className="text-text-muted hover:text-text transition-colors text-sm">{t('footer.updates')}</a>
           </div>
 
           {/* Resources Column */}
           <div className="flex flex-col gap-4">
-            <h3 className="text-white font-semibold text-sm tracking-wider uppercase opacity-80 mb-2">Resources</h3>
-            <a href="#/" className="text-white/60 hover:text-white transition-colors text-sm">Documentation</a>
-            <a href="#/" className="text-white/60 hover:text-white transition-colors text-sm">Audits</a>
-            <a href="#/" className="text-white/60 hover:text-white transition-colors text-sm">Risk Policy</a>
+            <h3 className="text-text font-semibold text-sm tracking-wider uppercase opacity-80 mb-2">{t('footer.resources')}</h3>
+            <a href="#/" className="text-text-muted hover:text-text transition-colors text-sm">{t('footer.documentation')}</a>
+            <a href="#/" className="text-text-muted hover:text-text transition-colors text-sm">{t('footer.audits')}</a>
+            <a href="#/" className="text-text-muted hover:text-text transition-colors text-sm">{t('footer.riskPolicy')}</a>
           </div>
 
           {/* Community Column */}
           <div className="flex flex-col gap-4">
-            <h3 className="text-white font-semibold text-sm tracking-wider uppercase opacity-80 mb-2">Community</h3>
-            <a href="#/" className="text-white/60 hover:text-white transition-colors text-sm flex items-center gap-2">
+            <h3 className="text-text font-semibold text-sm tracking-wider uppercase opacity-80 mb-2">{t('footer.community')}</h3>
+            <a href="#/" className="text-text-muted hover:text-text transition-colors text-sm flex items-center gap-2">
               <MessageCircle className="w-4 h-4" /> Twitter / X
             </a>
-            <a href="#/" className="text-white/60 hover:text-white transition-colors text-sm flex items-center gap-2">
+            <a href="#/" className="text-text-muted hover:text-text transition-colors text-sm flex items-center gap-2">
               <Disc className="w-4 h-4" /> Discord
             </a>
-            <a href="#/" className="text-white/60 hover:text-white transition-colors text-sm flex items-center gap-2">
+            <a href="#/" className="text-text-muted hover:text-text transition-colors text-sm flex items-center gap-2">
               <Send className="w-4 h-4" /> Telegram
             </a>
           </div>
 
           {/* Legal Column */}
           <div className="flex flex-col gap-4">
-            <h3 className="text-white font-semibold text-sm tracking-wider uppercase opacity-80 mb-2">Legal</h3>
-            <a href="#/" className="text-white/60 hover:text-white transition-colors text-sm">Terms of Service</a>
-            <a href="#/" className="text-white/60 hover:text-white transition-colors text-sm">Privacy Policy</a>
+            <h3 className="text-text font-semibold text-sm tracking-wider uppercase opacity-80 mb-2">{t('footer.legal')}</h3>
+            <a href="#/" className="text-text-muted hover:text-text transition-colors text-sm">{t('footer.terms')}</a>
+            <a href="#/" className="text-text-muted hover:text-text transition-colors text-sm">{t('footer.privacy')}</a>
           </div>
         </div>
 
@@ -54,19 +56,19 @@ export function Footer() {
               <div className="absolute inset-0.5 bg-gradient-to-br from-indigo-500 to-cyan-400 rounded-full" />
               <div className="absolute inset-1 bg-cyan-300 rounded-full" />
             </div>
-            <span className="text-white/70 text-sm font-medium">
+            <span className="text-text-secondary text-sm font-medium">
               &copy; {currentYear} Matryo Finance
             </span>
           </div>
 
-          <div className="flex items-center gap-4 text-white/50">
-            <a href={SITE.twitter} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors p-2" aria-label="Twitter">
+          <div className="flex items-center gap-4 text-text-muted">
+            <a href={SITE.twitter} target="_blank" rel="noopener noreferrer" className="hover:text-text transition-colors p-2" aria-label="Twitter">
               <MessageCircle className="w-5 h-5" />
             </a>
-            <a href={SITE.discord} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors p-2" aria-label="Discord">
+            <a href={SITE.discord} target="_blank" rel="noopener noreferrer" className="hover:text-text transition-colors p-2" aria-label="Discord">
               <Disc className="w-5 h-5" />
             </a>
-            <a href={SITE.telegram} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors p-2" aria-label="Telegram">
+            <a href={SITE.telegram} target="_blank" rel="noopener noreferrer" className="hover:text-text transition-colors p-2" aria-label="Telegram">
               <Send className="w-5 h-5" />
             </a>
           </div>

@@ -1,16 +1,19 @@
 import React from 'react';
 import { StatCard } from '@/components/shared/StatCard';
 import { Wallet, Coins, TrendingUp, Star, ArrowDownRight, ArrowUpRight } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export const Overview: React.FC = () => {
+  const { t } = useLanguage();
+
   return (
     <div className="space-y-6">
-      <h1 className="text-3xl font-bold tracking-tight text-text">Overview</h1>
+      <h1 className="text-3xl font-bold tracking-tight text-text">{t('app.overview')}</h1>
 
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
         <StatCard 
-          title="mUSD Balance" 
+          title={t('app.overview.musdBalance')} 
           value={10000.00} 
           prefix="$" 
           decimals={2} 
@@ -18,7 +21,7 @@ export const Overview: React.FC = () => {
           className="glass border-primary/20"
         />
         <StatCard 
-          title="smUSD Value" 
+          title={t('app.overview.smusdValue')} 
           value={10450.12} 
           prefix="$" 
           decimals={2} 
@@ -26,7 +29,7 @@ export const Overview: React.FC = () => {
           className="glass border-secondary/20"
         />
         <StatCard 
-          title="Earned Yield" 
+          title={t('app.overview.earnedYield')} 
           value={450.12} 
           prefix="$" 
           decimals={2} 
@@ -34,7 +37,7 @@ export const Overview: React.FC = () => {
           className="glass border-success/20"
         />
         <StatCard 
-          title="Current APY" 
+          title={t('app.overview.currentApy')} 
           value={8.42} 
           suffix="%" 
           decimals={2} 
@@ -45,26 +48,26 @@ export const Overview: React.FC = () => {
 
       {/* Your Position */}
       <div className="glass rounded-2xl p-6 border border-border">
-        <h2 className="text-xl font-semibold mb-6 text-text">Your Position</h2>
+        <h2 className="text-xl font-semibold mb-6 text-text">{t('app.overview.yourPosition')}</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <div>
-            <p className="text-sm text-text-muted mb-1">Unstaked mUSD</p>
+            <p className="text-sm text-text-muted mb-1">{t('app.overview.unstakedMusd')}</p>
             <p className="text-2xl font-mono font-medium text-text">3,170.00 <span className="text-sm text-text-muted">mUSD</span></p>
           </div>
           <div>
-            <p className="text-sm text-text-muted mb-1">Staked smUSD</p>
+            <p className="text-sm text-text-muted mb-1">{t('app.overview.stakedSmusd')}</p>
             <p className="text-2xl font-mono font-medium text-text">6,830.00 <span className="text-sm text-text-muted">smUSD</span></p>
           </div>
           <div>
-            <p className="text-sm text-text-muted mb-1">Staked Value</p>
+            <p className="text-sm text-text-muted mb-1">{t('app.overview.stakedValue')}</p>
             <p className="text-2xl font-mono font-medium text-success">$7,137.46</p>
           </div>
         </div>
 
         <div>
           <div className="flex justify-between text-sm mb-2">
-            <span className="text-text-muted">Stake Ratio</span>
-            <span className="text-primary font-medium">68.3% staked</span>
+            <span className="text-text-muted">{t('app.overview.stakeRatio')}</span>
+            <span className="text-primary font-medium">68.3% {t('app.overview.staked')}</span>
           </div>
           <div className="w-full bg-surface-light rounded-full h-2">
             <div className="bg-gradient-to-r from-primary to-secondary h-2 rounded-full" style={{ width: '68.3%' }}></div>
@@ -74,7 +77,7 @@ export const Overview: React.FC = () => {
 
       {/* Recent Activity */}
       <div className="glass rounded-2xl p-6 border border-border">
-        <h2 className="text-xl font-semibold mb-4 text-text">Recent Activity</h2>
+        <h2 className="text-xl font-semibold mb-4 text-text">{t('app.overview.recentActivity')}</h2>
         <div className="space-y-4">
           <div className="flex items-center justify-between p-3 rounded-lg hover:bg-surface-light transition-colors">
             <div className="flex items-center gap-4">
@@ -82,8 +85,8 @@ export const Overview: React.FC = () => {
                 <ArrowDownRight size={20} />
               </div>
               <div>
-                <p className="font-medium text-text">Deposited USDC</p>
-                <p className="text-sm text-text-muted">2 days ago</p>
+                <p className="font-medium text-text">{t('app.overview.depositedUsdc')}</p>
+                <p className="text-sm text-text-muted">{t('app.overview.daysAgo2')}</p>
               </div>
             </div>
             <div className="text-right">
@@ -97,8 +100,8 @@ export const Overview: React.FC = () => {
                 <ArrowUpRight size={20} />
               </div>
               <div>
-                <p className="font-medium text-text">Staked mUSD</p>
-                <p className="text-sm text-text-muted">2 days ago</p>
+                <p className="font-medium text-text">{t('app.overview.stakedMusd')}</p>
+                <p className="text-sm text-text-muted">{t('app.overview.daysAgo2')}</p>
               </div>
             </div>
             <div className="text-right">
@@ -112,8 +115,8 @@ export const Overview: React.FC = () => {
                 <TrendingUp size={20} />
               </div>
               <div>
-                <p className="font-medium text-text">Yield Earned</p>
-                <p className="text-sm text-text-muted">1 day ago</p>
+                <p className="font-medium text-text">{t('app.overview.yieldEarned')}</p>
+                <p className="text-sm text-text-muted">{t('app.overview.daysAgo1')}</p>
               </div>
             </div>
             <div className="text-right">
@@ -127,8 +130,8 @@ export const Overview: React.FC = () => {
                 <Star size={20} />
               </div>
               <div>
-                <p className="font-medium text-text">Points Earned</p>
-                <p className="text-sm text-text-muted">1 day ago</p>
+                <p className="font-medium text-text">{t('app.overview.pointsEarned')}</p>
+                <p className="text-sm text-text-muted">{t('app.overview.daysAgo1')}</p>
               </div>
             </div>
             <div className="text-right">

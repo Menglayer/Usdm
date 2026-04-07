@@ -1,16 +1,17 @@
 import { motion } from 'framer-motion';
 import { ECOSYSTEM_PARTNERS } from '@/data/stats';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export const Ecosystem = () => {
+  const { t } = useLanguage();
+
   return (
     <section className="py-24 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
-            Matryo Everywhere
-          </h2>
+          <h2 className="text-3xl md:text-5xl font-bold mb-4">{t('ecosystem.title')}</h2>
           <p className="text-text-muted max-w-2xl mx-auto text-lg">
-            Integrated with the best protocols in DeFi to bring you sustainable, compounded yields.
+            {t('ecosystem.subtitle')}
           </p>
         </div>
 
@@ -28,7 +29,7 @@ export const Ecosystem = () => {
             >
               <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/5 transition-colors duration-300" />
               <span className="text-xs font-semibold uppercase tracking-wider text-text-muted group-hover:text-text-secondary transition-colors">
-                {partner.category}
+                {t(`ecosystem.category.${partner.category}`)}
               </span>
               <span className="text-xl font-bold text-text group-hover:text-white transition-colors">
                 {partner.name}
@@ -43,17 +44,17 @@ export const Ecosystem = () => {
         <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 py-8 border-y border-border/30 bg-surface/30">
           <div className="text-center">
             <div className="text-3xl font-mono font-bold text-primary mb-1">10+</div>
-            <div className="text-sm text-text-secondary uppercase tracking-wider">Integrated Protocols</div>
+            <div className="text-sm text-text-secondary uppercase tracking-wider">{t('ecosystem.integratedProtocols')}</div>
           </div>
           <div className="w-px h-12 bg-border/50 hidden md:block" />
           <div className="text-center">
             <div className="text-3xl font-mono font-bold text-secondary mb-1">3</div>
-            <div className="text-sm text-text-secondary uppercase tracking-wider">Chains</div>
+            <div className="text-sm text-text-secondary uppercase tracking-wider">{t('ecosystem.chains')}</div>
           </div>
           <div className="w-px h-12 bg-border/50 hidden md:block" />
           <div className="text-center">
             <div className="text-3xl font-mono font-bold text-accent mb-1">50+</div>
-            <div className="text-sm text-text-secondary uppercase tracking-wider">Yield Strategies</div>
+            <div className="text-sm text-text-secondary uppercase tracking-wider">{t('ecosystem.yieldStrategies')}</div>
           </div>
         </div>
       </div>
