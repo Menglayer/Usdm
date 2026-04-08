@@ -3,9 +3,11 @@ import { PageWrapper } from '@/components/ui/PageWrapper';
 import { Coins, ArrowRight, Info, Zap } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useToast } from '@/contexts/ToastContext';
 
 export const Stake: React.FC = () => {
   const { t } = useLanguage();
+  const toast = useToast();
   const [activeTab, setActiveTab] = useState<'stake' | 'unstake'>('stake');
   const [amount, setAmount] = useState('');
   const [isLoopMode, setIsLoopMode] = useState(false);
@@ -94,7 +96,22 @@ export const Stake: React.FC = () => {
               </span>
             </div>
 
-            <button type="button" className="w-full py-4 bg-secondary hover:bg-[#7C3AED] text-white font-semibold rounded-xl transition-colors text-lg shadow-lg shadow-secondary/20">
+            <button
+              type="button"
+              onClick={() => {
+                const amountText = amount || numericAmount || '0'
+                // Try to use i18n key 'notification_staked' safely
+                let msg = t('notification_staked')
+                if (msg === 'notification_staked') {
+                  // key missing, fallback
+                  msg = `Staked ${amountText}`
+                } else {
+                  msg = msg.includes('{amount}') ? msg.replace('{amount}', amountText.toString()) : `${msg} ${amountText}`
+                }
+                toast.success(msg, t('notification_success') ?? '')
+              }}
+              className="w-full py-4 bg-secondary hover:bg-[#7C3AED] text-white font-semibold rounded-xl transition-colors text-lg shadow-lg shadow-secondary/20"
+            >
               {t('app.stake.stakeMusd')}
             </button>
           </div>
@@ -184,7 +201,16 @@ export const Stake: React.FC = () => {
           
            <button 
              type="button"
-             onClick={() => setIsLoopMode(!isLoopMode)}
+             onClick={() => {
+               setIsLoopMode(!isLoopMode)
+               const amountText = amount || numericAmount || ''
+               const action = !isLoopMode ? 'enabled' : 'disabled'
+               let msg = t('notification_loop_' + action) // e.g. 'notification_loop_enabled'
+               if (msg === `notification_loop_${action}`) {
+                 msg = `Loop ${action}${amountText ? ' — ' + amountText : ''}`
+               }
+               toast.success(msg)
+             }}
              className={cn(
                "w-full py-3 px-4 font-semibold rounded-xl transition-all shadow-xl flex items-center justify-center gap-2 group",
                isLoopMode

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { PageWrapper } from '@/components/ui/PageWrapper';
-import { ArrowDown, Coins, AlertCircle } from 'lucide-react';
+import { ArrowDown, Coins, AlertCircle, Settings } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export const MintRedeem: React.FC = () => {
   const { t } = useLanguage();
@@ -10,6 +11,9 @@ export const MintRedeem: React.FC = () => {
   const [asset, setAsset] = useState('USDC');
   const [amount, setAmount] = useState('');
   const [showToast, setShowToast] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
+  const [slippage, setSlippage] = useState('Auto');
+  const [deadline, setDeadline] = useState('20');
 
   const isStable = ['USDC', 'USDT'].includes(asset);
   
@@ -23,29 +27,94 @@ export const MintRedeem: React.FC = () => {
       <h1 className="text-3xl font-bold tracking-tight text-text">{t('app.mintRedeem')}</h1>
 
       <div className="glass-strong hover:scale-[1.01] transition-transform duration-300 rounded-2xl p-6 border border-border">
-        {/* Tabs */}
-        <div className="flex p-1 bg-surface-light rounded-xl mb-6">
+        {/* Tabs and Settings */}
+        <div className="flex items-center gap-3 mb-6">
+          <div className="flex p-1 bg-surface-light rounded-xl flex-1">
+            <button
+              type="button"
+              className={cn(
+                "flex-1 py-2 text-sm font-medium rounded-lg transition-all",
+                activeTab === 'mint' ? "bg-primary text-white shadow-lg" : "text-text-muted hover:text-text"
+              )}
+              onClick={() => setActiveTab('mint')}
+            >
+              {t('app.mintRedeem.mint')}
+            </button>
+            <button
+              type="button"
+              className={cn(
+                "flex-1 py-2 text-sm font-medium rounded-lg transition-all",
+                activeTab === 'redeem' ? "bg-primary text-white shadow-lg" : "text-text-muted hover:text-text"
+              )}
+              onClick={() => setActiveTab('redeem')}
+            >
+              {t('app.mintRedeem.redeem')}
+            </button>
+          </div>
           <button
             type="button"
+            onClick={() => setShowSettings(!showSettings)}
             className={cn(
-              "flex-1 py-2 text-sm font-medium rounded-lg transition-all",
-              activeTab === 'mint' ? "bg-primary text-white shadow-lg" : "text-text-muted hover:text-text"
+              "p-2.5 rounded-xl border border-border transition-all duration-300 glass hover:scale-105 active:scale-95",
+              showSettings ? "bg-primary/20 text-primary border-primary/50" : "bg-surface-light text-text-muted hover:text-text hover:bg-surface"
             )}
-            onClick={() => setActiveTab('mint')}
+            title={t('advancedSettings')}
           >
-            {t('app.mintRedeem.mint')}
-          </button>
-          <button
-            type="button"
-            className={cn(
-              "flex-1 py-2 text-sm font-medium rounded-lg transition-all",
-              activeTab === 'redeem' ? "bg-primary text-white shadow-lg" : "text-text-muted hover:text-text"
-            )}
-            onClick={() => setActiveTab('redeem')}
-          >
-            {t('app.mintRedeem.redeem')}
+            <Settings size={20} className={cn("transition-transform duration-500", showSettings && "rotate-90")} />
           </button>
         </div>
+
+        <AnimatePresence>
+          {showSettings && (
+            <motion.div
+              initial={{ height: 0, opacity: 0, marginBottom: 0 }}
+              animate={{ height: 'auto', opacity: 1, marginBottom: 24 }}
+              exit={{ height: 0, opacity: 0, marginBottom: 0 }}
+              className="overflow-hidden"
+            >
+              <div className="glass-panel p-5 rounded-xl border border-border space-y-4">
+                <h3 className="text-sm font-semibold text-text flex items-center gap-2 mb-2">
+                  <Settings size={16} className="text-primary" />
+                  {t('advancedSettings')}
+                </h3>
+                
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <span className="text-sm font-medium text-text-muted">{t('slippage')}</span>
+                  <div className="flex items-center gap-2 bg-surface-light p-1 rounded-lg border border-border">
+                    {['0.1%', '0.5%', '1.0%', 'Auto'].map((val) => (
+                      <button
+                        key={val}
+                        type="button"
+                        onClick={() => setSlippage(val)}
+                        className={cn(
+                          "px-3 py-1.5 text-xs font-medium rounded-md transition-all glass hover:scale-105 active:scale-95",
+                          slippage === val 
+                            ? "bg-primary text-white shadow-md shadow-primary/20 glow-primary" 
+                            : "text-text-muted hover:text-text hover:bg-surface"
+                        )}
+                      >
+                        {val}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between gap-3">
+                  <span className="text-sm font-medium text-text-muted">{t('txDeadline')}</span>
+                  <div className="flex items-center gap-2">
+                    <input 
+                      type="number" 
+                      value={deadline}
+                      onChange={(e) => setDeadline(e.target.value)}
+                      className="w-20 bg-surface-light border border-border rounded-lg px-3 py-1.5 text-sm text-right text-text focus:outline-none focus:border-primary transition-colors glass focus:ring-1 focus:ring-primary/50"
+                    />
+                    <span className="text-sm text-text-muted">mins</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {activeTab === 'mint' ? (
           <div className="space-y-4">
