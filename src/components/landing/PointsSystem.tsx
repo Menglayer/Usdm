@@ -39,7 +39,7 @@ export const PointsSystem = () => {
               <span className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary text-sm">1</span>{t('points.howToEarn')}</h3>
             <ul className="space-y-6">
               {[
-                { title: 'Hold mUSD/smUSD', desc: '1 MP per $1 per day' },
+                { title: 'Hold USD.萌/sUSD.萌', desc: '1 MP per $1 per day' },
                 { title: 'Provide LP', desc: '3x multiplier on your base points' },
                 { title: 'Referrals', desc: "10% of your referee's points" },
                 { title: 'Early adopter', desc: '2x bonus for the first 90 days', highlight: true }

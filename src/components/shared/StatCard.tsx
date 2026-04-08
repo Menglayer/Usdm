@@ -1,6 +1,8 @@
 import { cn } from '@/lib/utils'
 import { AnimatedCounter } from './AnimatedCounter'
 import type { ReactNode } from 'react'
+import { motion } from 'framer-motion'
+import { itemVariants } from '@/components/ui/animations'
 
 interface StatCardProps {
   title: string
@@ -26,9 +28,12 @@ export function StatCard({
   className,
 }: StatCardProps) {
   return (
-    <div
+    <motion.div
+      variants={itemVariants}
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
       className={cn(
-        'glass rounded-xl p-5 border-l-[3px] transition-all duration-300 hover:glow-primary',
+        'glass-strong rounded-xl p-5 border-l-[3px] transition-all duration-300 hover:glow-primary cursor-pointer',
         borderColor,
         className,
       )}
@@ -47,6 +52,6 @@ export function StatCard({
       {subtitle && (
         <p className="text-xs text-text-muted mt-1">{subtitle}</p>
       )}
-    </div>
+    </motion.div>
   )
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { PageWrapper } from '@/components/ui/PageWrapper';
 import { COLLATERAL_ASSETS } from '@/data/stats';
 import { ExternalLink, ShieldCheck } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -8,7 +9,7 @@ export const Transparency: React.FC = () => {
   const { t } = useLanguage();
 
   return (
-    <div className="space-y-8">
+    <PageWrapper className="space-y-8">
       <div>
         <h1 className="text-3xl font-bold tracking-tight text-text mb-2">{t('app.transparency.title')}</h1>
         <p className="text-text-muted max-w-2xl">
@@ -17,7 +18,7 @@ export const Transparency: React.FC = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="glass rounded-2xl p-8 border border-border flex flex-col items-center justify-center text-center">
+        <div className="glass-strong hover:scale-[1.01] transition-transform duration-300 rounded-2xl p-8 border border-border flex flex-col items-center justify-center text-center">
           <div className="w-48 h-48 rounded-full border-8 border-surface-light flex flex-col items-center justify-center relative mb-4">
             <div className="absolute inset-0 rounded-full border-8 border-success border-t-transparent border-r-transparent rotate-45"></div>
             <div className="absolute inset-0 rounded-full border-8 border-success opacity-20"></div>
@@ -28,7 +29,7 @@ export const Transparency: React.FC = () => {
           <p className="text-sm text-text-muted">{t('app.transparency.collateralRatio')}</p>
         </div>
 
-        <div className="glass rounded-2xl p-6 border border-border lg:col-span-2 flex flex-col">
+        <div className="glass-strong hover:scale-[1.01] transition-transform duration-300 rounded-2xl p-6 border border-border lg:col-span-2 flex flex-col">
           <h2 className="text-xl font-bold text-text mb-6">{t('app.transparency.protocolAllocation')}</h2>
           
           <div className="flex-1 flex flex-col justify-center">
@@ -68,7 +69,7 @@ export const Transparency: React.FC = () => {
         </div>
       </div>
 
-      <div className="glass rounded-2xl p-6 border border-border overflow-hidden">
+      <div className="glass-strong hover:scale-[1.01] transition-transform duration-300 rounded-2xl p-6 border border-border overflow-hidden">
         <h2 className="text-xl font-bold text-text mb-6">{t('app.transparency.collateralBreakdown')}</h2>
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse min-w-[600px]">
@@ -107,6 +108,6 @@ export const Transparency: React.FC = () => {
           {t('app.transparency.viewDefillama')} <ExternalLink size={16} className="text-text-muted" />
         </a>
       </div>
-    </div>
+    </PageWrapper>
   );
 };

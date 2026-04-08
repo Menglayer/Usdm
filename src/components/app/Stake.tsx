@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { PageWrapper } from '@/components/ui/PageWrapper';
 import { Coins, ArrowRight, Info, Zap } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -13,10 +14,10 @@ export const Stake: React.FC = () => {
   const receiveAmount = activeTab === 'stake' ? numericAmount / 1.05 : numericAmount * 1.05;
 
   return (
-    <div className="max-w-xl mx-auto space-y-6">
+    <PageWrapper className="max-w-xl mx-auto space-y-6">
       <h1 className="text-3xl font-bold tracking-tight text-text">{t('app.stake.title')}</h1>
 
-      <div className="glass rounded-2xl p-6 border border-border">
+      <div className="glass-strong hover:scale-[1.01] transition-transform duration-300 rounded-2xl p-6 border border-border">
         {/* Tabs */}
         <div className="flex p-1 bg-surface-light rounded-xl mb-6">
           <button
@@ -45,13 +46,13 @@ export const Stake: React.FC = () => {
           <div className="space-y-6">
             <div className="flex justify-between items-center bg-surface-light px-4 py-2 rounded-lg border border-border/50">
               <span className="text-sm text-text-muted">{t('app.stake.exchangeRate')}</span>
-              <span className="text-sm font-medium text-text">1 smUSD = 1.05 mUSD</span>
+              <span className="text-sm font-medium text-text">1 sUSD.萌 = 1.05 USD.萌</span>
             </div>
 
             <div className="space-y-2">
               <div className="flex justify-between">
                 <label htmlFor="stake-amount" className="text-sm font-medium text-text-muted">{t('app.stake.amountToStake')}</label>
-                <span className="text-sm text-text-muted">{t('app.stake.balance')}: 10,000.00 mUSD</span>
+                <span className="text-sm text-text-muted">{t('app.stake.balance')}: 10,000.00 USD.萌</span>
               </div>
               <div className="flex gap-2 bg-surface border border-border rounded-xl px-4 py-3 focus-within:border-secondary transition-colors">
                 <input 
@@ -64,7 +65,7 @@ export const Stake: React.FC = () => {
                 />
                 <div className="flex items-center gap-2 pl-4 border-l border-border">
                   <Coins className="text-primary" size={20} />
-                  <span className="font-medium text-text">mUSD</span>
+                  <span className="font-medium text-text">USD.萌</span>
                 </div>
               </div>
             </div>
@@ -73,7 +74,7 @@ export const Stake: React.FC = () => {
               <div>
                 <p className="text-sm text-text-muted mb-1">{t('app.stake.youWillReceive')}</p>
                 <p className="text-xl font-mono font-medium text-secondary">
-                  {receiveAmount.toFixed(4)} smUSD
+                  {receiveAmount.toFixed(4)} sUSD.萌
                 </p>
               </div>
               <ArrowRight className="text-secondary opacity-50" size={24} />
@@ -101,13 +102,13 @@ export const Stake: React.FC = () => {
           <div className="space-y-6">
             <div className="flex justify-between items-center bg-surface-light px-4 py-2 rounded-lg border border-border/50">
               <span className="text-sm text-text-muted">{t('app.stake.exchangeRate')}</span>
-              <span className="text-sm font-medium text-text">1 smUSD = 1.05 mUSD</span>
+              <span className="text-sm font-medium text-text">1 sUSD.萌 = 1.05 USD.萌</span>
             </div>
 
             <div className="space-y-2">
               <div className="flex justify-between">
                 <label htmlFor="unstake-amount" className="text-sm font-medium text-text-muted">{t('app.stake.amountToUnstake')}</label>
-                <span className="text-sm text-text-muted">{t('app.stake.balance')}: 6,830.00 smUSD</span>
+                <span className="text-sm text-text-muted">{t('app.stake.balance')}: 6,830.00 sUSD.萌</span>
               </div>
               <div className="flex gap-2 bg-surface border border-border rounded-xl px-4 py-3 focus-within:border-secondary transition-colors">
                 <input 
@@ -120,7 +121,7 @@ export const Stake: React.FC = () => {
                 />
                 <div className="flex items-center gap-2 pl-4 border-l border-border">
                   <Coins className="text-secondary" size={20} />
-                  <span className="font-medium text-text">smUSD</span>
+                  <span className="font-medium text-text">sUSD.萌</span>
                 </div>
               </div>
             </div>
@@ -129,7 +130,7 @@ export const Stake: React.FC = () => {
               <div>
                 <p className="text-sm text-text-muted mb-1">{t('app.stake.youWillReceive')}</p>
                 <p className="text-xl font-mono font-medium text-primary">
-                  {receiveAmount.toFixed(2)} mUSD
+                  {receiveAmount.toFixed(2)} USD.萌
                 </p>
               </div>
               <ArrowRight className="text-primary opacity-50" size={24} />
@@ -197,7 +198,7 @@ export const Stake: React.FC = () => {
         </div>
       </div>
 
-      <div className="glass rounded-xl p-5 border border-border space-y-3">
+      <div className="glass-strong hover:scale-[1.01] transition-transform duration-300 rounded-xl p-5 border border-border space-y-3">
         <h3 className="font-semibold text-text flex items-center gap-2">
           <Info size={18} className="text-accent" /> {t('app.stake.howSmusdWorks')}
         </h3>
@@ -205,6 +206,6 @@ export const Stake: React.FC = () => {
           {t('app.stake.howSmusdWorksDesc')}
         </p>
       </div>
-    </div>
+    </PageWrapper>
   );
 };

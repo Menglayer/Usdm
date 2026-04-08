@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import { Menu } from 'lucide-react';
 import { AppSidebar } from './AppSidebar';
+import { AnimatePresence } from 'framer-motion';
 
 export const AppLayout: React.FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const location = useLocation();
 
   return (
     <div className="flex h-screen w-full bg-bg text-text overflow-hidden">
@@ -38,7 +40,9 @@ export const AppLayout: React.FC = () => {
         {/* Main Content Area */}
         <main className="flex-1 overflow-y-auto p-4 md:p-6 lg:p-8">
           <div className="mx-auto max-w-6xl">
-            <Outlet />
+            <AnimatePresence mode="wait">
+              <Outlet key={location.pathname} />
+            </AnimatePresence>
           </div>
         </main>
       </div>

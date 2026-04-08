@@ -17,7 +17,7 @@ export const Redemption = () => {
     },
     {
       title: 'Standard',
-      description: '7-day cooldown period (smUSD unstake)',
+      description: '7-day cooldown period (sUSD.萌 unstake)',
       badge: '7 Days',
       color: 'text-accent',
       bgColor: 'bg-accent/10',

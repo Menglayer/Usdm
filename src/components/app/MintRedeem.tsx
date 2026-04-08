@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { PageWrapper } from '@/components/ui/PageWrapper';
 import { ArrowDown, Coins, AlertCircle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -18,10 +19,10 @@ export const MintRedeem: React.FC = () => {
   };
 
   return (
-    <div className="max-w-xl mx-auto space-y-6">
+    <PageWrapper className="max-w-xl mx-auto space-y-6">
       <h1 className="text-3xl font-bold tracking-tight text-text">{t('app.mintRedeem')}</h1>
 
-      <div className="glass rounded-2xl p-6 border border-border">
+      <div className="glass-strong hover:scale-[1.01] transition-transform duration-300 rounded-2xl p-6 border border-border">
         {/* Tabs */}
         <div className="flex p-1 bg-surface-light rounded-xl mb-6">
           <button
@@ -84,7 +85,7 @@ export const MintRedeem: React.FC = () => {
               <div className="flex gap-2 bg-surface-light border border-border rounded-xl px-4 py-3 opacity-80">
                 <div className="flex items-center gap-2 w-1/3">
                   <Coins className="text-primary" size={20} />
-                  <span className="font-medium text-text">mUSD</span>
+                  <span className="font-medium text-text">USD.萌</span>
                 </div>
                 <div className="flex-1 text-right font-mono text-xl text-text">
                   {amount || '0.00'}
@@ -104,7 +105,7 @@ export const MintRedeem: React.FC = () => {
             <button
               type="button"
               onClick={handleAction}
-              className="w-full py-4 mt-6 bg-primary hover:bg-primary-light text-white font-semibold rounded-xl transition-colors text-lg shadow-lg shadow-primary/20"
+              className="w-full py-4 mt-6 bg-primary hover:bg-primary-light text-white font-semibold rounded-xl transition-colors text-lg shadow-lg shadow-primary/20 glow-primary hover:scale-105 active:scale-95 transition-all"
             >
               {t('app.mintRedeem.mintMusd')}
             </button>
@@ -116,7 +117,7 @@ export const MintRedeem: React.FC = () => {
               <div className="flex gap-2">
                 <div className="flex items-center gap-2 w-1/3 bg-surface border border-border rounded-xl px-4 py-3">
                   <Coins className="text-primary" size={20} />
-                  <span className="font-medium text-text">mUSD</span>
+                  <span className="font-medium text-text">USD.萌</span>
                 </div>
                 <input 
                   type="number"
@@ -166,7 +167,7 @@ export const MintRedeem: React.FC = () => {
             <button
               type="button"
               onClick={handleAction}
-              className="w-full py-4 mt-6 bg-primary hover:bg-primary-light text-white font-semibold rounded-xl transition-colors text-lg shadow-lg shadow-primary/20"
+              className="w-full py-4 mt-6 bg-primary hover:bg-primary-light text-white font-semibold rounded-xl transition-colors text-lg shadow-lg shadow-primary/20 glow-primary hover:scale-105 active:scale-95 transition-all"
             >
               {t('app.mintRedeem.redeemMusd')}
             </button>
@@ -180,6 +181,6 @@ export const MintRedeem: React.FC = () => {
           <p className="text-sm text-text-muted">{t('app.mintRedeem.connectWalletDesc')}</p>
         </div>
       )}
-    </div>
+    </PageWrapper>
   );
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+import { PageWrapper } from '@/components/ui/PageWrapper';
 import { EARN_STRATEGIES } from '@/data/stats';
 import { ShieldAlert, ArrowRight, Zap, Target, Layers } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -33,7 +34,7 @@ export const Earn: React.FC = () => {
   }));
 
   return (
-    <div className="space-y-8">
+    <PageWrapper className="space-y-8">
       <div>
         <h1 className="text-3xl font-bold tracking-tight text-text mb-2">{t('app.earn.title')}</h1>
         <p className="text-text-muted max-w-2xl">
@@ -46,7 +47,7 @@ export const Earn: React.FC = () => {
           const accentColor = getAccentColor(EARN_STRATEGIES[index].tier);
           
           return (
-            <div key={strategy.name} className="glass rounded-2xl p-6 border border-border flex flex-col relative overflow-hidden group hover:border-border/80 transition-colors">
+            <div key={strategy.name} className="glass-strong hover:scale-[1.01] transition-transform duration-300 rounded-2xl p-6 border border-border flex flex-col relative overflow-hidden group hover:border-border/80 transition-colors">
               <div className={cn(
                 "absolute -top-10 -right-10 w-32 h-32 rounded-full blur-3xl opacity-20 pointer-events-none transition-opacity group-hover:opacity-40",
                 accentColor === 'cyan' && "bg-cyan-500",
@@ -102,7 +103,7 @@ export const Earn: React.FC = () => {
         })}
       </div>
 
-      <div className="glass rounded-2xl p-6 border border-primary/20 bg-primary/5 flex flex-col sm:flex-row justify-between items-center gap-6">
+      <div className="glass-strong hover:scale-[1.01] transition-transform duration-300 rounded-2xl p-6 border border-primary/20 bg-primary/5 flex flex-col sm:flex-row justify-between items-center gap-6 glow-primary hover:scale-105 active:scale-95 transition-all">
         <div>
           <h3 className="text-xl font-bold text-text mb-1 flex items-center gap-2">
             <Zap size={20} className="text-primary" /> {t('app.earn.maximizeYield')}
@@ -116,6 +117,6 @@ export const Earn: React.FC = () => {
           <p className="text-3xl font-mono font-bold text-text">{t('app.earn.upTo')} 28.4%</p>
         </div>
       </div>
-    </div>
+    </PageWrapper>
   );
 };

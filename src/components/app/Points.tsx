@@ -1,4 +1,5 @@
 import React from 'react';
+import { PageWrapper } from '@/components/ui/PageWrapper';
 import { AnimatedCounter } from '@/components/shared/AnimatedCounter';
 import { Star, Gift, Crown, Trophy, CheckCircle2, Zap, ShieldCheck, Coins, Layers, Users, Clock } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -18,7 +19,7 @@ export const Points: React.FC = () => {
   ].sort((a, b) => a.threshold - b.threshold);
 
   return (
-    <div className="space-y-8">
+    <PageWrapper className="space-y-8">
       <div>
         <h1 className="text-3xl font-bold tracking-tight text-text mb-2">{t('app.points.title')}</h1>
         <p className="text-text-muted max-w-2xl">
@@ -28,7 +29,7 @@ export const Points: React.FC = () => {
 
       {/* Top Stats */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="glass rounded-2xl p-8 border border-warning/30 bg-warning/5 lg:col-span-2 relative overflow-hidden group">
+        <div className="glass-strong hover:scale-[1.01] transition-transform duration-300 rounded-2xl p-8 border border-warning/30 bg-warning/5 lg:col-span-2 relative overflow-hidden group">
           <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
             <Star size={120} className="text-warning" />
           </div>
@@ -55,11 +56,11 @@ export const Points: React.FC = () => {
           </div>
         </div>
 
-        <div className="glass rounded-2xl p-6 border border-border flex flex-col">
+        <div className="glass-strong hover:scale-[1.01] transition-transform duration-300 rounded-2xl p-6 border border-border flex flex-col">
           <h2 className="text-xl font-bold text-text mb-4">{t('app.points.howToEarn')}</h2>
           <div className="space-y-4 flex-1">
             <div className="flex gap-4">
-              <div className="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
+              <div className="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0 glow-primary hover:scale-105 active:scale-95 transition-all">
                 <Coins size={20} />
               </div>
               <div>
@@ -77,7 +78,7 @@ export const Points: React.FC = () => {
               </div>
             </div>
             <div className="flex gap-4">
-              <div className="w-10 h-10 rounded-full bg-accent/10 text-accent flex items-center justify-center shrink-0">
+              <div className="w-10 h-10 rounded-full bg-accent/10 text-accent flex items-center justify-center shrink-0 glow-accent hover:scale-105 active:scale-95 transition-all">
                 <Users size={20} />
               </div>
               <div>
@@ -98,7 +99,7 @@ export const Points: React.FC = () => {
         </div>
       </div>
 
-      <div className="glass rounded-2xl p-8 border border-border">
+      <div className="glass-strong hover:scale-[1.01] transition-transform duration-300 rounded-2xl p-8 border border-border">
         <h2 className="text-2xl font-bold text-text mb-8 flex items-center gap-3">
           <Trophy className="text-warning" /> {t('app.points.rewardsTrack')}
         </h2>
@@ -154,6 +155,6 @@ export const Points: React.FC = () => {
           })}
         </div>
       </div>
-    </div>
+    </PageWrapper>
   );
 };

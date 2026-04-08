@@ -26,14 +26,14 @@ export function HowItWorks() {
     {
       num: "01",
       title: "Deposit",
-      desc: "Deposit USDT, USDC, or overcollateralize with BTC/ETH/SOL to mint mUSD",
+      desc: "Deposit USDT, USDC, or overcollateralize with BTC/ETH/SOL to mint USD.萌",
       icon: Wallet,
       color: "cyan"
     },
     {
       num: "02",
       title: "Stake",
-      desc: "Stake mUSD to receive smUSD — your yield-bearing position",
+      desc: "Stake USD.萌 to receive sUSD.萌 — your yield-bearing position",
       icon: Layers,
       color: "indigo"
     },

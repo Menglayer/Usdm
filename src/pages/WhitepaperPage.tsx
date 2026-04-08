@@ -1,83 +1,71 @@
 import { ContentLayout } from '@/components/layout/ContentLayout';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export const WhitepaperPage = () => {
+  const { locale } = useLanguage();
   return (
     <ContentLayout 
-      title="Whitepaper" 
-      subtitle="A Decentralized, Yield-Bearing Stablecoin Powered by Delta-Neutral Strategies"
+      title={locale === 'zh' ? '白皮书' : 'Whitepaper'} 
+      subtitle={locale === 'zh' ? '由 Delta 中性策略驱动的去中心化生息稳定币' : 'A Decentralized, Yield-Bearing Stablecoin Powered by Delta-Neutral Strategies'}
     >
       <div className="space-y-12">
         <section>
-          <h2>Abstract</h2>
+          <h2>{locale === 'zh' ? '摘要' : 'Abstract'}</h2>
           <p>
-            The USDM protocol introduces a novel architecture for stablecoin issuance. By combining 
-            overcollateralization with delta-neutral hedging strategies, USDM provides a fully 
-            decentralized, price-stable asset that automatically accrues yield. This paper outlines 
-            the mechanism design, tokenomics, and risk mitigation strategies that form the core of 
-            the protocol.
+            {locale === 'zh' ? 'USD.萌 协议引入了一种新颖的稳定币发行架构。通过将超额抵押与 Delta 中性对冲策略相结合，USD.萌 提供了一种完全去中心化、价格稳定且能自动产生收益的资产。本文概述了构成协议核心的机制设计、代币经济学以及风险缓解策略。' : 'The USDM protocol introduces a novel architecture for stablecoin issuance. By combining overcollateralization with delta-neutral hedging strategies, USDM provides a fully decentralized, price-stable asset that automatically accrues yield. This paper outlines the mechanism design, tokenomics, and risk mitigation strategies that form the core of the protocol.'}
           </p>
         </section>
 
         <section>
-          <h2>1. Introduction</h2>
+          <h2>{locale === 'zh' ? '1. 引言' : '1. Introduction'}</h2>
           <p>
-            Fiat-backed stablecoins suffer from centralization risk and regulatory uncertainty. 
-            Algorithmic stablecoins have repeatedly failed to maintain their peg under market stress. 
-            USDM solves these trilemmas by implementing a strategy that pairs spot crypto collateral 
-            with equivalent short positions in perpetual futures markets.
+            {locale === 'zh' ? '法币支持的稳定币面临中心化风险和监管不确定性。算法稳定币在市场压力下屡次未能维持锚定。USD.萌 通过实施将现货加密抵押品与永续合约市场中等额空头头寸配对的策略，解决了这些不可能三角难题。' : 'Fiat-backed stablecoins suffer from centralization risk and regulatory uncertainty. Algorithmic stablecoins have repeatedly failed to maintain their peg under market stress. USDM solves these trilemmas by implementing a strategy that pairs spot crypto collateral with equivalent short positions in perpetual futures markets.'}
           </p>
           <div className="bg-surface border border-border p-6 rounded-lg mt-6">
-            <h3 className="text-xl font-bold mb-4">Core Principles</h3>
+            <h3 className="text-xl font-bold mb-4">{locale === 'zh' ? '核心原则' : 'Core Principles'}</h3>
             <ol className="list-decimal pl-6 space-y-2">
-              <li><strong>Capital Efficiency:</strong> Near 1:1 collateralization ratio.</li>
-              <li><strong>Censorship Resistance:</strong> No reliance on traditional banking infrastructure.</li>
-              <li><strong>Value Accrual:</strong> Funding rates from perpetual markets flow directly to holders.</li>
+              <li><strong>{locale === 'zh' ? '资本效率 (Capital Efficiency)：' : 'Capital Efficiency:'}</strong> {locale === 'zh' ? '接近 1:1 的抵押率。' : 'Near 1:1 collateralization ratio.'}</li>
+              <li><strong>{locale === 'zh' ? '抗审查性 (Censorship Resistance)：' : 'Censorship Resistance:'}</strong> {locale === 'zh' ? '不依赖传统银行基础设施。' : 'No reliance on traditional banking infrastructure.'}</li>
+              <li><strong>{locale === 'zh' ? '价值捕获 (Value Accrual)：' : 'Value Accrual:'}</strong> {locale === 'zh' ? '来自永续合约市场的资金费率直接流向 sUSD.萌 持有者。' : 'Funding rates from perpetual markets flow directly to holders.'}</li>
             </ol>
           </div>
         </section>
 
         <section>
-          <h2>2. The Delta-Neutral Mechanism</h2>
+          <h2>{locale === 'zh' ? '2. Delta 中性机制' : '2. The Delta-Neutral Mechanism'}</h2>
           <p>
-            When a user deposits collateral (e.g., stETH) to mint USDM, the protocol simultaneously 
-            opens a 1x short position on a decentralized perpetual exchange (e.g., GMX or Synthetix). 
-            This ensures that regardless of the underlying asset's price movement, the total USD 
-            value of the position remains constant.
+            {locale === 'zh' ? '当用户存入抵押品（例如 stETH）以铸造 USD.萌 时，协议会同时在去中心化永续合约交易所（例如 GMX 或 Synthetix）上建立 1 倍空头头寸。这确保了无论底层资产价格如何波动，头寸的总美元价值始终保持不变。' : 'When a user deposits collateral (e.g., stETH) to mint USDM, the protocol simultaneously opens a 1x short position on a decentralized perpetual exchange (e.g., GMX or Synthetix). This ensures that regardless of the underlying asset\'s price movement, the total USD value of the position remains constant.'}
           </p>
           <div className="bg-gradient-to-br from-primary/10 to-secondary/10 p-6 rounded-xl border border-primary/20 my-8">
-            <h4 className="text-primary mt-0 mb-4">Mathematical Model</h4>
+            <h4 className="text-primary mt-0 mb-4">{locale === 'zh' ? '数学模型' : 'Mathematical Model'}</h4>
             <div className="font-mono text-sm space-y-2">
               <p>V_total = V_collateral + V_short</p>
               <p>ΔV_total = ΔV_collateral + ΔV_short</p>
-              <p>Since ΔV_short = -ΔV_collateral</p>
+              <p>{locale === 'zh' ? '由于' : 'Since'} ΔV_short = -ΔV_collateral</p>
               <p>ΔV_total = 0</p>
             </div>
           </div>
         </section>
 
         <section>
-          <h2>3. Yield Generation</h2>
+          <h2>{locale === 'zh' ? '3. 收益生成 (Yield Generation)' : '3. Yield Generation'}</h2>
           <p>
-            The yield generated by USDM is derived from two primary sources:
+            {locale === 'zh' ? 'sUSD.萌 产生的收益主要来自两个来源：' : 'The yield generated by USDM is derived from two primary sources:'}
           </p>
           <ul>
             <li>
-              <strong>Funding Rates:</strong> Historically, crypto perpetual markets exhibit a positive funding 
-              rate bias, meaning long positions pay short positions.
+              <strong>{locale === 'zh' ? '资金费率 (Funding Rates)：' : 'Funding Rates:'}</strong> {locale === 'zh' ? '从历史上看，加密货币永续合约市场表现出正向的资金费率偏差，这意味着多头头寸向空头头寸支付费用。' : 'Historically, crypto perpetual markets exhibit a positive funding rate bias, meaning long positions pay short positions.'}
             </li>
             <li>
-              <strong>Staking Yields:</strong> The underlying collateral (like stETH) continues to accrue 
-              staking rewards natively.
+              <strong>{locale === 'zh' ? '流动性质押收益 (Liquid Staking Yields)：' : 'Staking Yields:'}</strong> {locale === 'zh' ? '底层抵押品（如 stETH）原生持续累积质押奖励。' : 'The underlying collateral (like stETH) continues to accrue staking rewards natively.'}
             </li>
           </ul>
         </section>
 
         <section>
-          <h2>4. Conclusion</h2>
+          <h2>{locale === 'zh' ? '4. 结论' : '4. Conclusion'}</h2>
           <p>
-            USDM represents the next evolution in decentralized money. By separating the store of value 
-            from volatile market movements while capturing the structural premiums of crypto markets, 
-            it provides a robust foundation for the future of decentralized finance.
+            {locale === 'zh' ? 'USD.萌 代表了去中心化货币的下一次演进。通过将价值存储与波动的市场运动分离开来，同时捕获加密市场的结构性溢价，它为去中心化金融的未来奠定了坚实的基础。' : 'USDM represents the next evolution in decentralized money. By separating the store of value from volatile market movements while capturing the structural premiums of crypto markets, it provides a robust foundation for the future of decentralized finance.'}
           </p>
         </section>
       </div>
