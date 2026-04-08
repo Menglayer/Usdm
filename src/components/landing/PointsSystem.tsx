@@ -13,19 +13,19 @@ export const PointsSystem = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <motion.div 
-            initial={{ scale: 0.9, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-primary/30 text-primary mb-6 text-sm font-semibold tracking-wide uppercase"
-          >
-            <Zap className="w-4 h-4 fill-primary" />
-            Matryoshka Points
-          </motion.div>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">{t('points.title')}</h2>
-          <p className="text-text-muted max-w-2xl mx-auto text-lg">
-            Matryoshka Points (MP) reward every interaction. The earlier you participate, the more you earn.
-          </p>
+           <motion.div 
+             initial={{ scale: 0.9, opacity: 0 }}
+             whileInView={{ scale: 1, opacity: 1 }}
+             viewport={{ once: true }}
+             className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-primary/30 text-primary mb-6 text-sm font-semibold tracking-wide uppercase"
+           >
+             <Zap className="w-4 h-4 fill-primary" />
+             {t('points.badge')}
+           </motion.div>
+           <h2 className="text-3xl md:text-5xl font-bold mb-4">{t('points.title')}</h2>
+           <p className="text-text-muted max-w-2xl mx-auto text-lg">
+             {t('points.subtitle')}
+           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
@@ -37,13 +37,13 @@ export const PointsSystem = () => {
           >
             <h3 className="text-2xl font-bold mb-8 flex items-center gap-3">
               <span className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary text-sm">1</span>{t('points.howToEarn')}</h3>
-            <ul className="space-y-6">
-              {[
-                { title: 'Hold USD.萌/sUSD.萌', desc: '1 MP per $1 per day' },
-                { title: 'Provide LP', desc: '3x multiplier on your base points' },
-                { title: 'Referrals', desc: "10% of your referee's points" },
-                { title: 'Early adopter', desc: '2x bonus for the first 90 days', highlight: true }
-              ].map((item) => (
+             <ul className="space-y-6">
+               {[
+                 { title: t('points.holdMusd'), desc: t('points.holdMusdDesc') },
+                 { title: t('points.provideLP'), desc: t('points.provideLPDesc') },
+                 { title: t('points.referrals'), desc: t('points.referralsDesc') },
+                 { title: t('points.earlyAdopter'), desc: t('points.earlyAdopterDesc'), highlight: true }
+               ].map((item) => (
                 <li key={item.title} className="flex items-start gap-4 group">
                   <div className="mt-1">
                     <CheckCircle2 className="w-6 h-6 text-success opacity-80 group-hover:opacity-100 transition-opacity" />
@@ -67,14 +67,14 @@ export const PointsSystem = () => {
           >
             <h3 className="text-2xl font-bold mb-8 flex items-center gap-3">
               <span className="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center text-secondary text-sm">2</span>{t('points.whatUnlock')}</h3>
-            <ul className="space-y-4">
-              {[
-                'Future token airdrops',
-                'APY boosts (up to +2%)',
-                'Governance voting power',
-                'VIP strategy access',
-                'Exclusive NFT badges'
-              ].map((item) => (
+             <ul className="space-y-4">
+               {[
+                 t('points.airdrop'),
+                 t('points.apyBoost'),
+                 t('points.governance'),
+                 t('points.vipAccess'),
+                 t('points.nftBadge')
+               ].map((item) => (
                 <li key={item} className="flex items-center gap-4 glass px-4 py-3 rounded-xl border border-border/30 hover:border-secondary/30 transition-colors cursor-default group">
                   <ChevronRight className="w-5 h-5 text-secondary opacity-50 group-hover:opacity-100 transition-all group-hover:translate-x-1" />
                   <span className="font-medium">{item}</span>

@@ -96,7 +96,7 @@ export const AppLayout: React.FC = () => {
               <span className="font-semibold tracking-wide">menglayer.btc</span>
               <div className="flex items-center gap-1.5 ml-1 px-2 py-0.5 rounded-full bg-green-500/10">
                 <div className="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(16,185,129,0.8)] animate-pulse"></div>
-                <span className="text-xs text-green-500 font-bold">Connected</span>
+                <span className="text-xs text-green-500 font-bold">{t('connected')}</span>
               </div>
             </div>
             

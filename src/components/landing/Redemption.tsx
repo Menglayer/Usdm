@@ -7,27 +7,27 @@ export const Redemption = () => {
 
   const options = [
     {
-      title: 'Instant',
-      description: '1:1 instant redemption, no questions asked',
-      badge: 'Instant',
+      title: t('redemption.instant'),
+      description: t('redemption.instantDesc'),
+      badge: t('redemption.instantBadge'),
       color: 'text-success',
       bgColor: 'bg-success/10',
       borderColor: 'border-success/30',
       icon: Zap
     },
     {
-      title: 'Standard',
-      description: '7-day cooldown period (sUSD.萌 unstake)',
-      badge: '7 Days',
+      title: t('redemption.standard'),
+      description: t('redemption.standardDesc'),
+      badge: t('redemption.standardBadge'),
       color: 'text-accent',
       bgColor: 'bg-accent/10',
       borderColor: 'border-accent/30',
       icon: Timer
     },
     {
-      title: 'Slow Redeem',
-      description: 'Choose 30-day delay, earn extra interest',
-      badge: '30 Days + Bonus',
+      title: t('redemption.slow'),
+      description: t('redemption.slowDesc'),
+      badge: t('redemption.slowBadge'),
       color: 'text-secondary',
       bgColor: 'bg-secondary/10',
       borderColor: 'border-secondary/30',
@@ -38,14 +38,14 @@ export const Redemption = () => {
   return (
     <section className="py-24 relative overflow-hidden">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
-            Flexible exits. Your money, your timeline.
-          </h2>
-          <p className="text-text-muted max-w-2xl mx-auto text-lg">
-            Exit your positions securely at any time with multiple redemption options tailored to your needs.
-          </p>
-        </div>
+         <div className="text-center mb-16">
+           <h2 className="text-3xl md:text-5xl font-bold mb-4">
+             {t('redemption.title')}
+           </h2>
+           <p className="text-text-muted max-w-2xl mx-auto text-lg">
+             {t('redemption.subtitle')}
+           </p>
+         </div>
 
         <div className="relative pl-8 md:pl-0 mb-12">
           {/* Vertical line connecting the steps */}
@@ -85,9 +85,9 @@ export const Redemption = () => {
 
         <div className="glass p-4 rounded-xl flex items-start gap-4 border border-border/50 bg-primary/5">
           <Info className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-          <p className="text-sm text-text-muted leading-relaxed">
-            <strong className="text-text font-medium">{t('redemption.emergencyGuard')}</strong> In the event of extreme market volatility, instant redemptions are guaranteed up to $5M per user per day from the protocol insurance fund.
-          </p>
+           <p className="text-sm text-text-muted leading-relaxed">
+             <strong className="text-text font-medium">{t('redemption.emergencyGuard')}</strong> {t('redemption.emergencyGuardDesc')}
+           </p>
         </div>
       </div>
     </section>

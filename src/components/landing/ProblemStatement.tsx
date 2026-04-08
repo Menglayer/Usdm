@@ -18,7 +18,7 @@ export function ProblemStatement() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-text mb-6 tracking-tight">
-            Stablecoins were never meant to <span className="text-indigo-400">{t('problem.titleHighlight')}</span>
+            {t('problem.title')} <span className="text-indigo-400">{t('problem.titleHighlight')}</span>
           </h2>
         </motion.div>
 
@@ -36,7 +36,7 @@ export function ProblemStatement() {
               <h3 className="text-xl font-semibold text-text mb-4 flex items-center gap-3">
                 <span className="w-8 h-8 rounded-full bg-danger/20 text-danger flex items-center justify-center font-bold font-mono text-sm">01</span>{t('problem.brokenModel')}</h3>
               <p className="text-text-secondary leading-relaxed text-lg">
-                Currently, stablecoin issuers like Tether capture <span className="text-text font-medium">$6B+ annually</span> from reserves. USDC yields nothing to everyday holders. User deposits generate billions in yield, but those returns go exclusively to centralized corporations.
+                {t('problem.brokenModelDesc')}
               </p>
             </div>
           </motion.div>
@@ -56,7 +56,7 @@ export function ProblemStatement() {
               <h3 className="text-xl font-semibold text-text mb-4 flex items-center gap-3 relative z-10">
                 <span className="w-8 h-8 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold font-mono text-sm shadow-[0_0_10px_rgba(99,102,241,0.5)]">02</span>{t('problem.solution')}</h3>
               <p className="text-text-secondary leading-relaxed text-lg relative z-10">
-                We flip the model. Matryo passes <strong className="text-text font-semibold">80% of the generated yield</strong> back to token holders. By stacking RWA foundation yields, CeFi basis trading, and DeFi composability, we create a stablecoin that actively works for you.
+                {t('problem.solutionDesc')}
               </p>
             </div>
           </motion.div>

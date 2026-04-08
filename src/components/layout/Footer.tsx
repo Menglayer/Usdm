@@ -10,13 +10,11 @@ export function Footer() {
   return (
     <footer className="relative bg-bg-alt border-t border-white/5 py-12 md:py-16 z-10 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-12">
           {/* Protocol Column */}
           <div className="flex flex-col gap-4">
             <h3 className="text-text font-semibold text-sm tracking-wider uppercase opacity-80 mb-2">{t('footer.protocol')}</h3>
-            <a href="#/whitepaper" className="text-text-muted hover:text-text transition-colors text-sm">{t('footer.whitepaper')}</a>
-            <a href="#/" className="text-text-muted hover:text-text transition-colors text-sm">{t('footer.governance')}</a>
-            <a href="#/" className="text-text-muted hover:text-text transition-colors text-sm">{t('footer.updates')}</a>
+             <a href="#/whitepaper" className="text-text-muted hover:text-text transition-colors text-sm">{t('footer.whitepaper')}</a>
           </div>
 
           {/* Resources Column */}
@@ -27,7 +25,7 @@ export function Footer() {
             <a href="#/risk" className="text-text-muted hover:text-text transition-colors text-sm">{t('footer.riskPolicy')}</a>
           </div>
 
-          {/* Community Column */}
+           {/* Community Column */}
           <div className="flex flex-col gap-4">
             <h3 className="text-text font-semibold text-sm tracking-wider uppercase opacity-80 mb-2">{t('footer.community')}</h3>
             <a href={SITE.twitter} target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-text transition-colors text-sm flex items-center gap-2">
@@ -40,34 +38,15 @@ export function Footer() {
               <Send className="w-4 h-4" /> Telegram
             </a>
           </div>
-
-          {/* Legal Column */}
-          <div className="flex flex-col gap-4">
-            <h3 className="text-text font-semibold text-sm tracking-wider uppercase opacity-80 mb-2">{t('footer.legal')}</h3>
-            <a href="#/" className="text-text-muted hover:text-text transition-colors text-sm">{t('footer.terms')}</a>
-            <a href="#/" className="text-text-muted hover:text-text transition-colors text-sm">{t('footer.privacy')}</a>
-          </div>
         </div>
 
-        {/* Bottom Bar */}
+         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-3 group">
             <Logo className="w-6 h-6 opacity-70 group-hover:opacity-100 transition-opacity" />
             <span className="text-text-secondary text-sm font-medium">
               &copy; {currentYear} Matryo Finance
             </span>
-          </div>
-
-          <div className="flex items-center gap-4 text-text-muted">
-            <a href={SITE.twitter} target="_blank" rel="noopener noreferrer" className="hover:text-text transition-colors p-2" aria-label="Twitter">
-              <MessageCircle className="w-5 h-5" />
-            </a>
-            <a href={SITE.discord} target="_blank" rel="noopener noreferrer" className="hover:text-text transition-colors p-2" aria-label="Discord">
-              <Disc className="w-5 h-5" />
-            </a>
-            <a href={SITE.telegram} target="_blank" rel="noopener noreferrer" className="hover:text-text transition-colors p-2" aria-label="Telegram">
-              <Send className="w-5 h-5" />
-            </a>
           </div>
         </div>
       </div>

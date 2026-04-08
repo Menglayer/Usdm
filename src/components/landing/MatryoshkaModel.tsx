@@ -55,10 +55,10 @@ export function MatryoshkaModel() {
           className="text-center max-w-4xl mx-auto mb-20"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-text mb-6 tracking-tight">
-            Three layers. One dollar. <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-cyan-400">{t('matryoshka.titleHighlight')}</span>
+            {t('matryoshka.title')} <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-cyan-400">{t('matryoshka.titleHighlight')}</span>
           </h2>
           <p className="text-lg text-text-muted">
-            Hover over the layers to see how Matryo stacks yields from different sources into a single, cohesive stablecoin.
+            {t('matryoshka.subtitle')}
           </p>
         </motion.div>
 
@@ -148,7 +148,7 @@ export function MatryoshkaModel() {
             </div>
             <h3 className="text-xl font-bold text-text mb-2">{t('matryoshka.defiShell')}</h3>
             <p className="text-text-muted mb-6 min-h-[60px]">
-              Pendle YT/PT positions, Curve LPs, and Morpho Vaults. The high-yield compounding layer.
+              {t('matryoshka.defiDesc')}
             </p>
             <div className="flex justify-between items-center pt-6 border-t border-border/50">
               <div>
@@ -177,7 +177,7 @@ export function MatryoshkaModel() {
             </div>
             <h3 className="text-xl font-bold text-text mb-2">{t('matryoshka.cefiCore')}</h3>
             <p className="text-text-muted mb-6 min-h-[60px]">
-              Delta-neutral basis trading and funding rate arbitrage on top centralized exchanges.
+              {t('matryoshka.cefiDesc')}
             </p>
             <div className="flex justify-between items-center pt-6 border-t border-border/50">
               <div>
@@ -206,7 +206,7 @@ export function MatryoshkaModel() {
             </div>
             <h3 className="text-xl font-bold text-text mb-2">{t('matryoshka.rwaFoundation')}</h3>
             <p className="text-text-muted mb-6 min-h-[60px]">
-              US T-Bills, overcollateralized money markets, and AA-Grade corporate bonds.
+              {t('matryoshka.rwaDesc')}
             </p>
             <div className="flex justify-between items-center pt-6 border-t border-border/50">
               <div>

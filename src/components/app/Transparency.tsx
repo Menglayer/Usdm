@@ -101,12 +101,12 @@ export const Transparency: React.FC = () => {
       </div>
 
       <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-        <a href="#dune" className="flex items-center justify-center gap-2 py-3 px-6 rounded-xl border border-border bg-surface hover:bg-surface-light transition-colors text-sm font-medium text-text">
-          {t('app.transparency.viewDune')} <ExternalLink size={16} className="text-text-muted" />
-        </a>
-        <a href="#defillama" className="flex items-center justify-center gap-2 py-3 px-6 rounded-xl border border-border bg-surface hover:bg-surface-light transition-colors text-sm font-medium text-text">
-          {t('app.transparency.viewDefillama')} <ExternalLink size={16} className="text-text-muted" />
-        </a>
+        <button type="button" disabled className="flex items-center justify-center gap-2 py-3 px-6 rounded-xl border border-border bg-surface text-sm font-medium text-text-muted cursor-not-allowed opacity-60">
+          {t('app.transparency.viewDune')} <ExternalLink size={16} />
+        </button>
+        <button type="button" disabled className="flex items-center justify-center gap-2 py-3 px-6 rounded-xl border border-border bg-surface text-sm font-medium text-text-muted cursor-not-allowed opacity-60">
+          {t('app.transparency.viewDefillama')} <ExternalLink size={16} />
+        </button>
       </div>
     </PageWrapper>
   );

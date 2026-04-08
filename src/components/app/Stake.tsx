@@ -89,7 +89,7 @@ export const Stake: React.FC = () => {
                 : "bg-secondary/10 border-secondary/20"
             )}>
               <span className={cn("text-sm font-medium", isLoopMode ? "text-violet-400" : "text-secondary")}>
-                {t('app.stake.currentApy')} {isLoopMode && "(Loop Mode)"}
+                {t('app.stake.currentApy')} {isLoopMode && `(${t('app.stake.loopMode')})`}
               </span>
               <span className={cn("text-lg font-bold", isLoopMode ? "text-violet-400" : "text-secondary")}>
                 {isLoopMode ? "252%+" : "28.4%"}
@@ -183,18 +183,18 @@ export const Stake: React.FC = () => {
           <div className="flex items-center gap-3 mb-3">
             <Zap size={24} className="text-violet-400 animate-bounce" />
             <h3 className="text-2xl font-bold bg-gradient-to-r from-violet-400 via-indigo-400 to-cyan-400 bg-clip-text text-transparent">
-              1-Click Loop
+              {t('app.stake.loopTitle')}
             </h3>
           </div>
           <p className="text-sm text-text-muted mb-4">
-            Maximize your yield with automated leveraged staking. One click to unlock premium APY potential.
+            {t('app.stake.loopDesc')}
           </p>
           
           <div className="bg-surface/50 backdrop-blur rounded-xl p-4 border border-violet-500/20 mb-4">
             <div className="text-center">
-              <p className="text-xs font-medium text-violet-400 uppercase tracking-wider mb-1">Potential APY Boost</p>
+              <p className="text-xs font-medium text-violet-400 uppercase tracking-wider mb-1">{t('app.stake.loopApyLabel')}</p>
               <p className="text-3xl font-mono font-bold text-transparent bg-gradient-to-r from-violet-400 to-cyan-400 bg-clip-text">
-                Up to 252%+ APY
+                {t('app.stake.loopApy')}
               </p>
             </div>
           </div>
@@ -219,7 +219,7 @@ export const Stake: React.FC = () => {
              )}
            >
              <Zap size={18} className={cn("transition-transform", isLoopMode ? "animate-spin" : "group-hover:animate-spin")} />
-             {isLoopMode ? "Loop Mode Active ✓" : "Enable 1-Click Loop"}
+              {isLoopMode ? t('app.stake.loopActive') : t('app.stake.loopEnable')}
            </button>
         </div>
       </div>

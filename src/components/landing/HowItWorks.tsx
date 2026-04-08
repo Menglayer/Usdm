@@ -25,22 +25,22 @@ export function HowItWorks() {
   const steps = [
     {
       num: "01",
-      title: "Deposit",
-      desc: "Deposit USDT, USDC, or overcollateralize with BTC/ETH/SOL to mint USD.萌",
+      title: t('howItWorks.step1.title'),
+      desc: t('howItWorks.step1.desc'),
       icon: Wallet,
       color: "cyan"
     },
     {
       num: "02",
-      title: "Stake",
-      desc: "Stake USD.萌 to receive sUSD.萌 — your yield-bearing position",
+      title: t('howItWorks.step2.title'),
+      desc: t('howItWorks.step2.desc'),
       icon: Layers,
       color: "indigo"
     },
     {
       num: "03",
-      title: "Earn",
-      desc: "Auto-compounding daily. 80% of yield flows directly to you.",
+      title: t('howItWorks.step3.title'),
+      desc: t('howItWorks.step3.desc'),
       icon: LineChart,
       color: "violet"
     }
@@ -61,10 +61,10 @@ export function HowItWorks() {
           className="text-center max-w-3xl mx-auto mb-20"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-text mb-6 tracking-tight">
-            Get started in <span className="text-gradient">{t('howItWorks.titleHighlight')}</span>
+            {t('howItWorks.title')} <span className="text-gradient">{t('howItWorks.titleHighlight')}</span>
           </h2>
           <p className="text-lg text-text-muted">
-            From stablecoins to stacked yields in minutes. We handle the complexity, you keep the returns.
+            {t('howItWorks.subtitle')}
           </p>
         </motion.div>
 

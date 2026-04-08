@@ -7,18 +7,18 @@ export const Security = () => {
 
   const features = [
     {
-      title: 'Multi-Sig Control',
-      description: 'All protocol funds managed through multi-signature wallets with time-locked transactions.',
+      title: t('security.multiSig'),
+      description: t('security.multiSigDesc'),
       icon: Shield,
     },
     {
-      title: 'On-Chain Transparency',
-      description: 'Every asset, every strategy, every yield — verifiable on-chain in real-time.',
+      title: t('security.onChain'),
+      description: t('security.onChainDesc'),
       icon: Eye,
     },
     {
-      title: 'Insurance Reserve',
-      description: '10% of revenue allocated to insurance fund, protecting against black swan events.',
+      title: t('security.insurance'),
+      description: t('security.insuranceDesc'),
       icon: Lock,
     }
   ];
@@ -28,10 +28,10 @@ export const Security = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold mb-4">
-            Security is not a feature. <span className="text-gradient">{t('security.titleHighlight')}</span>
+            {t('security.title')} <span className="text-gradient">{t('security.titleHighlight')}</span>
           </h2>
           <p className="text-text-muted max-w-2xl mx-auto text-lg">
-            Built with institutional-grade security measures at every layer of the protocol.
+            {t('security.subtitle')}
           </p>
         </div>
 
@@ -58,7 +58,7 @@ export const Security = () => {
 
         <div className="text-center">
           <h3 className="text-sm font-semibold uppercase tracking-wider text-text-secondary mb-8">
-            Audited By
+            {t('security.auditedBy')}
           </h3>
           <div className="flex flex-wrap justify-center gap-6 opacity-60">
             {['Certik', 'Trail of Bits', 'OpenZeppelin'].map((auditor) => (

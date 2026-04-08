@@ -87,7 +87,7 @@ export const Overview: React.FC = () => {
           {/* Portfolio Performance Chart */}
           <motion.div variants={itemVariants} className="xl:col-span-2 glass-strong hover:scale-[1.01] transition-transform duration-300 rounded-2xl p-6 border border-border flex flex-col min-h-[400px]">
             <div className="flex justify-between items-center mb-6">
-              <h2 className="text-xl font-semibold text-text">Portfolio Performance</h2>
+              <h2 className="text-xl font-semibold text-text">{t('app.overview.portfolioPerformance')}</h2>
               <div className="flex items-center gap-2">
                 <span className="flex items-center gap-1 text-sm text-success bg-success/10 px-3 py-1 rounded-full border border-success/20">
                   <TrendingUp size={14} /> +28.4% APY
@@ -110,7 +110,7 @@ export const Overview: React.FC = () => {
                   <Tooltip 
                     contentStyle={{ backgroundColor: 'rgba(15, 23, 42, 0.9)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px', backdropFilter: 'blur(10px)' }}
                     itemStyle={{ color: '#fff', fontWeight: 500 }}
-                    formatter={(value: any) => [`$${value.toLocaleString()}`, 'Value']}
+                    formatter={(value: any) => [`$${value.toLocaleString()}`, t('app.overview.tooltipValue')]}
                   />
                   <Area type="monotone" dataKey="value" stroke="#6366f1" strokeWidth={3} fillOpacity={1} fill="url(#colorValue)" />
                 </AreaChart>
@@ -130,8 +130,8 @@ export const Overview: React.FC = () => {
                     <ArrowUpRight size={18} />
                   </div>
                   <div>
-                    <p className="font-medium text-text text-sm">Staked 1,000 USD.萌</p>
-                    <p className="text-xs text-text-muted mt-0.5">Just now</p>
+                    <p className="font-medium text-text text-sm">{t('app.overview.stakedAmount')}</p>
+                    <p className="text-xs text-text-muted mt-0.5">{t('app.overview.justNow')}</p>
                   </div>
                 </div>
               </div>
@@ -142,8 +142,8 @@ export const Overview: React.FC = () => {
                     <Activity size={18} />
                   </div>
                   <div>
-                    <p className="font-medium text-text text-sm">Activated 1-Click Loop</p>
-                    <p className="text-xs text-text-muted mt-0.5">2 hours ago</p>
+                    <p className="font-medium text-text text-sm">{t('app.overview.activatedLoop')}</p>
+                    <p className="text-xs text-text-muted mt-0.5">{t('app.overview.hoursAgo')}</p>
                   </div>
                 </div>
               </div>
@@ -154,12 +154,12 @@ export const Overview: React.FC = () => {
                     <TrendingUp size={18} />
                   </div>
                   <div>
-                    <p className="font-medium text-text text-sm">Yield Earned</p>
-                    <p className="text-xs text-text-muted mt-0.5">Yesterday</p>
+                    <p className="font-medium text-text text-sm">{t('app.overview.yieldEarned')}</p>
+                    <p className="text-xs text-text-muted mt-0.5">{t('app.overview.yesterday')}</p>
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="font-mono font-medium text-success text-sm">+12.50 mUSD</p>
+                  <p className="font-mono font-medium text-success text-sm">+12.50 USD.萌</p>
                 </div>
               </div>
 
@@ -169,8 +169,8 @@ export const Overview: React.FC = () => {
                     <Star size={18} />
                   </div>
                   <div>
-                    <p className="font-medium text-text text-sm">Points Earned</p>
-                    <p className="text-xs text-text-muted mt-0.5">Yesterday</p>
+                    <p className="font-medium text-text text-sm">{t('app.overview.pointsEarned')}</p>
+                    <p className="text-xs text-text-muted mt-0.5">{t('app.overview.yesterday')}</p>
                   </div>
                 </div>
                 <div className="text-right">
@@ -191,7 +191,7 @@ export const Overview: React.FC = () => {
             </div>
             <div>
               <p className="text-sm text-text-muted mb-1">{t('app.overview.stakedSmusd')}</p>
-              <p className="text-2xl font-mono font-medium text-text">6,830.00 <span className="text-sm text-text-muted">smUSD</span></p>
+              <p className="text-2xl font-mono font-medium text-text">6,830.00 <span className="text-sm text-text-muted">{t('app.overview.unitSmusd')}</span></p>
             </div>
             <div>
               <p className="text-sm text-text-muted mb-1">{t('app.overview.stakedValue')}</p>

@@ -26,10 +26,10 @@ export const YieldCalculator = () => {
       <div className="absolute inset-0 bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">{t('yieldCalc.title')}</h2>
-          <p className="text-text-muted max-w-2xl mx-auto text-lg">
-            See how much your stablecoins could be earning with our sustainable yield strategies.
-          </p>
+           <h2 className="text-3xl md:text-5xl font-bold mb-4">{t('yieldCalc.title')}</h2>
+           <p className="text-text-muted max-w-2xl mx-auto text-lg">
+             {t('yieldCalc.subtitle')}
+           </p>
         </div>
 
         <div className="glass-strong rounded-3xl p-8 md:p-12 max-w-4xl mx-auto border border-border/50 shadow-2xl relative overflow-hidden">
@@ -64,19 +64,19 @@ export const YieldCalculator = () => {
               onChange={(e) => setAmount(Number(e.target.value))}
               className="w-full h-2 bg-surface-light rounded-lg appearance-none cursor-pointer accent-primary"
             />
-            <div className="flex justify-between text-xs text-text-muted mt-2 font-mono">
-              <span>$1K</span>
-              <span>$500K</span>
-              <span>$1M</span>
-            </div>
+             <div className="flex justify-between text-xs text-text-muted mt-2 font-mono">
+               <span>{t('yieldCalc.rangeMin')}</span>
+               <span>{t('yieldCalc.rangeMid')}</span>
+               <span>{t('yieldCalc.rangeMax')}</span>
+             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            {[
-              { label: '7-Day Earnings', value: day7Yield },
-              { label: '30-Day Earnings', value: day30Yield },
-              { label: '1-Year Earnings', value: day365Yield, highlight: true }
-            ].map((period, i) => (
+           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+             {[
+               { label: t('yieldCalc.7day'), value: day7Yield },
+               { label: t('yieldCalc.30day'), value: day30Yield },
+               { label: t('yieldCalc.1year'), value: day365Yield, highlight: true }
+             ].map((period, i) => (
               <motion.div 
                 key={period.label}
                 initial={{ opacity: 0, y: 20 }}
@@ -110,9 +110,9 @@ export const YieldCalculator = () => {
               <span className="text-success text-3xl font-bold font-mono tracking-tight flex items-center gap-1 glow-accent">
                 +<AnimatedCounter end={diff} prefix="$" decimals={2} duration={1} /> 
               </span>
-              <span className="text-text-secondary font-medium mt-1">
-                {t('yieldCalc.vsBankSavings')} (0.5% APY)
-              </span>
+               <span className="text-text-secondary font-medium mt-1">
+                 {t('yieldCalc.vsBankSavings')}
+               </span>
             </p>
           </motion.div>
         </div>

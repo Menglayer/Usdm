@@ -13,24 +13,24 @@ export const CTAFooter = () => {
       <div className="absolute inset-0 bg-[url('/noise.png')] opacity-20 mix-blend-overlay pointer-events-none z-0" />
       
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center flex flex-col items-center">
-        <motion.h2 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-5xl md:text-7xl font-bold tracking-tight mb-6"
-        >
-          Start earning with <span className="text-gradient">{t('cta.titleHighlight')}</span>
-        </motion.h2>
+         <motion.h2 
+           initial={{ opacity: 0, y: 20 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           viewport={{ once: true }}
+           className="text-5xl md:text-7xl font-bold tracking-tight mb-6"
+         >
+           {t('cta.title')} <span className="text-gradient">{t('cta.titleHighlight')}</span>
+         </motion.h2>
         
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          viewport={{ once: true }}
-          className="text-xl text-text-muted mb-12 max-w-2xl"
-        >
-          Join thousands of users compounding their stablecoins across RWA, CeFi, and DeFi.
-        </motion.p>
+         <motion.p 
+           initial={{ opacity: 0, y: 20 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           transition={{ delay: 0.1 }}
+           viewport={{ once: true }}
+           className="text-xl text-text-muted mb-12 max-w-2xl"
+         >
+           {t('cta.subtitle')}
+         </motion.p>
         
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
@@ -43,10 +43,10 @@ export const CTAFooter = () => {
             className="group relative inline-flex items-center justify-center px-10 py-5 font-bold text-white transition-all duration-300 bg-primary rounded-full overflow-hidden hover:scale-105 shadow-[0_0_40px_rgba(99,102,241,0.4)] hover:shadow-[0_0_60px_rgba(99,102,241,0.6)]"
           >
             <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-black" />
-            <span className="relative flex items-center gap-3 text-lg">
-              Launch App
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </span>
+             <span className="relative flex items-center gap-3 text-lg">
+               {t('cta.launchApp')}
+               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+             </span>
           </Link>
         </motion.div>
 
@@ -70,9 +70,9 @@ export const CTAFooter = () => {
         </motion.div>
       </div>
 
-      <div className="absolute bottom-8 w-full text-center text-text-muted text-sm z-10">
-        © 2026 Matryo Finance. All rights reserved.
-      </div>
+       <div className="absolute bottom-8 w-full text-center text-text-muted text-sm z-10">
+         {t('cta.copyright')}
+       </div>
     </section>
   );
 };

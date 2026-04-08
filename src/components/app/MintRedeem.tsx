@@ -108,7 +108,7 @@ export const MintRedeem: React.FC = () => {
                       onChange={(e) => setDeadline(e.target.value)}
                       className="w-20 bg-surface-light border border-border rounded-lg px-3 py-1.5 text-sm text-right text-text focus:outline-none focus:border-primary transition-colors glass focus:ring-1 focus:ring-primary/50"
                     />
-                    <span className="text-sm text-text-muted">mins</span>
+                    <span className="text-sm text-text-muted">{t('txDeadlineUnit')}</span>
                   </div>
                 </div>
               </div>
